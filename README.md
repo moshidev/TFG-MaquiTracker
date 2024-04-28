@@ -6,4 +6,5 @@ ___
 
 Estructura del repositorio:
 
+* [**.devcontainer**](.devcontainer): Contenedores docker con imágenes para trabajar sobre el repositorio.
 * [**doc**](doc): Memoria del TFG.
