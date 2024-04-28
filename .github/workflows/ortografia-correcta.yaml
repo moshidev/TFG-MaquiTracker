@@ -1,4 +1,4 @@
-name: "Comprueba ortografía de la memoria"
+name: "La memoria tiene buena ortografía"
 
 on:
   push:
