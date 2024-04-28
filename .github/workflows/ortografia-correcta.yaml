@@ -15,4 +15,5 @@ jobs:
       - name: Instala make
         run: apk add make
       - name: Comprueba la ortografía de la memoria
-        run: make -C doc comprueba-ortografia
+        working-directory: ./memoria
+        run: make comprueba-ortografia

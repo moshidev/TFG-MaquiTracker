@@ -16,5 +16,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Compila correctamente
-        working-directory: ./doc
+        working-directory: ./memoria
         run: make
