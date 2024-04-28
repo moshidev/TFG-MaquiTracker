@@ -3,7 +3,8 @@ name: "La memoria tiene buena ortografía"
 on:
   push:
     paths:
-      - '**.tex'
+      - 'memoria/**.tex'
+      - 'docs/**.md'
 
 jobs:
   check-spelling:
@@ -16,4 +17,7 @@ jobs:
         run: apk add make
       - name: Comprueba la ortografía de la memoria
         working-directory: ./memoria
-        run: make comprueba-ortografia
+        run: make ortografia
+      - name: Comprueba la ortografía de la documentación
+        working-directory: ./docs
+        run: make ortografia

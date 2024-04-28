@@ -8,4 +8,5 @@ Estructura del repositorio:
 
 * [**.devcontainer**](.devcontainer): Contenedores docker con imágenes para trabajar sobre el repositorio.
 * [**.github/workflows**](.github/workflows): Procesos automáticos a ejecutar en GitHub.
+* [**docs**](docs): Documentación para el desarrollo del proyecto.
 * [**memoria**](memoria): Memoria del TFG.

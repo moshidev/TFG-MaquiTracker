@@ -14,7 +14,9 @@
 			"settings": {},
 			"extensions": [
                 "james-yu.latex-workshop",
-                "ms-vscode.makefile-tools"
+                "ms-vscode.makefile-tools",
+				"davidanson.vscode-markdownlint",
+				"marvhen.reflow-markdown"
 			]
 		}
 	}
