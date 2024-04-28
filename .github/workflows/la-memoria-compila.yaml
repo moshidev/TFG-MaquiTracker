@@ -1,0 +1,20 @@
+# Inspiración: https://github.com/ElenaMerelo/TFG/blob/master/.github/workflows/build-LaTex.yaml
+
+name: "La memoria compila"
+
+on:
+  push:
+    paths:
+      - '**.tex'
+
+
+jobs:
+  compila:
+    runs-on: ubuntu-latest
+    container:
+      image: daniel00/pandoc-latex:latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compila correctamente
+        working-directory: ./doc
+        run: make
