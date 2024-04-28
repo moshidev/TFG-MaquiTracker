@@ -1,0 +1,12 @@
+personal_ws-1.1 es 1 utf-8
+MaquiTracker
+Pedrosa
+Julián
+Merelo
+Guervos
+colorlinks
+linkcolor
+urlcolor
+GitHub
+Nuxeo
+bibliografia
