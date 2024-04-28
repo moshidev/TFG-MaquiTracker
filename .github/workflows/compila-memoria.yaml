@@ -17,4 +17,4 @@ jobs:
       - uses: actions/checkout@v4
       - name: Compila correctamente
         working-directory: ./memoria
-        run: make
+        run: make proyecto.pdf
