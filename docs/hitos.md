@@ -4,7 +4,7 @@
 
 Se entrega documentación explicando:
 
-1. Problema a resolver.
+1. Problema a resolver (con restricciones y requisitos asociados).
 1. Posibles soluciones. (Para conocer si es posible resolver
    el problema de una forma más o menos razonable).
 1. Análisis del estado del arte.
