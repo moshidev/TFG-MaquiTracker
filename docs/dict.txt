@@ -18,3 +18,11 @@ FRAM
 GNSS
 UBLOX
 Empatía
+Whatsapp
+FlashDB
+TSDB
+KVDB
+BDM
+baremetal
+SFTP
+MFi

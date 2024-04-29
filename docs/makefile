@@ -1,6 +1,6 @@
 # https://stackoverflow.com/questions/33847866/makefile-for-latex-aspell-with-multiple-files
 MDFILES := $(shell find . -name "*.md")
-.PHONY: ortografia formato
+.PHONY: ortografia formato clean
 
 all: ortografia formato
 
@@ -11,3 +11,6 @@ ortografia: $(addsuffix .spchk,$(basename $(MDFILES)))
 
 formato:
 	mdl $(MDFILES)
+
+clean:
+	rm -f *.aspell
