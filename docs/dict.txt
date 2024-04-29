@@ -27,3 +27,6 @@ baremetal
 SFTP
 MFi
 TFG
+Firestore
+Realtime
+NoSQL

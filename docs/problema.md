@@ -74,6 +74,9 @@ Empresa o trabajador que se dedica a tratar los árboles de campos a un tercero.
 Suelen ser hombres que están acostumbrados al trabajo físico. Operan maquinaria
 agrícola. Para comunicarse telemáticamente suelen utilizar Whatsapp y e-mail.
 
+[ Pendiente - Investigar hasta qué punto están dispuestos a voluntariamente
+echar a andar la aplicación cada vez que quieran registrar un trabajo ]
+
 ## Generar todas las ideas posibles (Idear)
 
 ### Histórico de trabajo (almacenamiento en control electrónico)
@@ -127,6 +130,39 @@ es más conveniente para el cliente.
       un sistema de ficheros FAT o similar.
       - Requiere adaptar físicamente la placa y la caja, garantizando
       de que este agujero no permita que entre polvo ni agua al control.
+
+### Histórico de trabajo (almacenamiento en *smartphone*)
+
+Aunque requeriría que el cliente estuviese atento de iniciar y finalizar
+una sesión de trabajo desde su teléfono, potencialmente puede ser más
+rápido y barato de desarrollar.
+
+Parte de la premisa de que lo que se quiere extraer de aquí es la información
+de un día de trabajo y no el histórico de una máquina.
+
+1. Transmisión de datos entre control y *smartphone*. (con garantías)
+   - BLE Peripheral Publisher.
+      - ¿Utilizando el procedimiento *[Connection Data Signing](https://lpccs-docs.renesas.com/Tutorial-DA145x-BLE-Security/access_and_signing.html)*?
+      - Necesitamos una aplicación de móvil que se suscriba a una característica.
+         - En iOS el servicio parece funcionar en primer plano y en segundo plano
+         si te suscribes a una característica en concreto.
+         - En Android va a ser más complicado de testar, pero en principio
+         parece más o menos estable.
+      - Necesitamos tener un buffer en el control para el caso de que se
+      desconecte el dispositivo, así como un aviso por pantalla de que se
+      ha perdido la conexión.
+1. Almacenamiento de datos. (con garantías)
+   - Firestore/Realtime Database. Implementado Android e iOS,
+   opcionalmente puede sincronizarse con una base de datos en
+   Google Cloud. El framework de Firebase ofrece otros servicios.
+   De pago.
+   - SQLite. Gestor de bases de datos SQL. Amplia adopción y de código
+   abierto.
+   - MongoDB. Gestor de bases de datos NoSQL. Amplia adopción y de código
+   abierto.
+
+### Histórico de trabajo (visualización de los datos)
+
 1. Comprobación de la validez de los datos y visualización.
    - Mediante un servicio web que permita visualizar los datos en la
    propia página web.
@@ -135,19 +171,9 @@ es más conveniente para el cliente.
       - Requeriría un mantenimiento durante muchos años por nuestra parte.
    - Mediante un software que permita transformar los datos a un PDF.
       - Requeriría distintos ports a distintas plataformas.
-
-### Histórico de trabajo (almacenamiento en *smartphone*)
-
-Aunque requeriría que el cliente estuviese atento de iniciar y finalizar
-una sesión de trabajo desde su teléfono, potencialmente puede ser más
-rápido y barato de desarrollar.
-
-1. Transmisión de datos entre control y *smartphone*. (con garantías)
-   - [ Pendiente ]
-1. Almacenamiento de datos. (con garantías)
-   - [ Pendiente ]
-1. Comprobación de la validez de los datos y visualización.
-   - [ Pendiente ]
+   - Mediante un software que permita visualizar y consultar los datos.
+      - Requeriría distintos ports a distintas plataformas.
+   - Mezcla de alguna de las anteriores.
 
 ## Construir prototipos de algunas de las ideas más prometedoras (Construir prototipos)
 
