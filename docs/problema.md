@@ -121,12 +121,33 @@ es más conveniente para el cliente.
       programa MFi.
       - Requiere que al otro lado se ejecute un software nuestro.
    - Mediante USB.
+      - Requiere utilizar algún stack que nos permita utilizar el
+      protocolo USB.
       - Requiere utilizar algún stack que nos permita interactuar con
       un sistema de ficheros FAT o similar.
       - Requiere adaptar físicamente la placa y la caja, garantizando
       de que este agujero no permita que entre polvo ni agua al control.
+1. Comprobación de la validez de los datos y visualización.
+   - Mediante un servicio web que permita visualizar los datos en la
+   propia página web.
+      - Requeriría un mantenimiento durante muchos años por nuestra parte.
+   - Mediante un servicio web que permita transformar los datos a un PDF.
+      - Requeriría un mantenimiento durante muchos años por nuestra parte.
+   - Mediante un software que permita transformar los datos a un PDF.
+      - Requeriría distintos ports a distintas plataformas.
 
-### Histórico de trabajo (almacenamiento en teléfono)
+### Histórico de trabajo (almacenamiento en *smartphone*)
+
+Aunque requeriría que el cliente estuviese atento de iniciar y finalizar
+una sesión de trabajo desde su teléfono, potencialmente puede ser más
+rápido y barato de desarrollar.
+
+1. Transmisión de datos entre control y *smartphone*. (con garantías)
+   - [ Pendiente ]
+1. Almacenamiento de datos. (con garantías)
+   - [ Pendiente ]
+1. Comprobación de la validez de los datos y visualización.
+   - [ Pendiente ]
 
 ## Construir prototipos de algunas de las ideas más prometedoras (Construir prototipos)
 
