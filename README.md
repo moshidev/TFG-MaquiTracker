@@ -7,6 +7,8 @@ ___
 Estructura del repositorio:
 
 * [**.devcontainer**](.devcontainer): Contenedores docker con imágenes para trabajar sobre el repositorio.
+* [**.git-hooks**](.git-hooks): Scripts que se ejecutan al ejecutar el comando
+de git asociado. Para que funcionen hay que ejecutar `dev-config.sh`.
 * [**.github/workflows**](.github/workflows): Procesos automáticos a ejecutar en GitHub.
 * [**docs**](docs): Documentación para el desarrollo del proyecto.
 * [**memoria**](memoria): Memoria del TFG.
