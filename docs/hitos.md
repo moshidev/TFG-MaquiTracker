@@ -24,6 +24,7 @@ Se entrega documentación explicando:
 1. Comparación de las soluciones más prometedoras.
 1. Elección de rumbo y defensa de esta elección.
 1. Desglose de requerimientos de la solución elegida.
+1. Objetivos.
 1. Diseño de metodología para la solución elegida.
 
 Se entrega en la memoria del TFG las secciones:
