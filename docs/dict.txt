@@ -31,3 +31,9 @@ Firestore
 Realtime
 NoSQL
 HMI
+APA
+IoT
+RTOS
+geopositioning
+pdf
+spp
