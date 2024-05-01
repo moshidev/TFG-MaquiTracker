@@ -21,9 +21,10 @@ a la compilación y análisis de la documentación que considere.
 
 Se entrega documentación explicando:
 
+1. Casos de uso.
 1. Comparación de las soluciones más prometedoras.
-1. Elección de rumbo y defensa de esta elección.
 1. Desglose de requerimientos de la solución elegida.
+1. Elección de rumbo y defensa de esta elección.
 1. Objetivos.
 1. Diseño de metodología para la solución elegida.
 
