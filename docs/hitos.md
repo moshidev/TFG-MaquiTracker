@@ -11,7 +11,6 @@ Se entrega documentación explicando:
 
 Se entrega en la memoria del TFG las secciones:
 
-1. Introducción.
 1. Descripción del problema.
 1. Estado del arte.
 
