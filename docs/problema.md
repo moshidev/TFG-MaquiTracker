@@ -175,6 +175,23 @@ de un día de trabajo y no el histórico de una máquina.
       - Requeriría distintos ports a distintas plataformas.
    - Mezcla de alguna de las anteriores.
 
+### Histórico de incidencias
+
+1. Almacenamiento de los datos.
+   - Almacenando en la FRAM.
+1. Registro de alarma.
+   - El software se mantiene a la escucha de las posibles incidencias.
+   Si ocurre alguna, actualiza el contador de usuario y de técnico de
+   incidencia.
+1. Recuperación de datos.
+   - Mediante el HMI del aparato. Hay 2 pantallas, una accesible por el
+   usuario y otra accesible desde el menú de técnico.
+1. Borrado de alarmas.
+   - Mediante el HMI del aparato. Hay 2 pantallas, una accesible por el
+   usuario y otra accesible desde el menú de técnico. Al marcar un tick
+   sobre el código de alarma, al salir de la pantalla, se pone a cero
+   el contador asociado.
+
 ## Construir prototipos de algunas de las ideas más prometedoras (Construir prototipos)
 
 [ Pendiente ]
