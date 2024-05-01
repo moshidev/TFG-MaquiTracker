@@ -65,7 +65,9 @@ siguientes características:
 
 ## Empatía con los usuarios mirándoles de cerca (Observar)
 
-[ Pendiente ]
+Cualquier solución que se proponga debería de incluir interfaces
+descriptivas y amigables para personas sin conocimientos de
+electricidad o electrónica.
 
 ## Usuario típico (Definir el punto de vista)
 
@@ -74,8 +76,8 @@ Empresa o trabajador que se dedica a tratar los árboles de campos a un tercero.
 Suelen ser hombres que están acostumbrados al trabajo físico. Operan maquinaria
 agrícola. Para comunicarse telemáticamente suelen utilizar Whatsapp y e-mail.
 
-[ Pendiente - Investigar hasta qué punto están dispuestos a voluntariamente
-echar a andar la aplicación cada vez que quieran registrar un trabajo ]
+[ **Pendiente - Investigar hasta qué punto están dispuestos a voluntariamente
+echar a andar la aplicación cada vez que quieran registrar un trabajo** ]
 
 ## Generar todas las ideas posibles (Idear)
 
