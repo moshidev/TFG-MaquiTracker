@@ -1,3 +1,5 @@
+# La razón de este workflow es asegurarme de que cualquiera va a poder compilar la memoria correctamente
+# con la imagen que he creado para ello.
 # Inspiración: https://github.com/ElenaMerelo/TFG/blob/master/.github/workflows/build-LaTex.yaml
 
 name: "La memoria compila"

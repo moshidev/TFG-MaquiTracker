@@ -1,3 +1,9 @@
 #!/bin/sh
+# Como desarrollador, quiero asegurarme que en ningún
+# momento hago un push de commits que no superan
+# la comprobación de calidad, de forma que no puedan
+# romper la entrega continua.
+# El comando `act` ejecuta los workflows de GitHub Actions
+# en local.
 
 act

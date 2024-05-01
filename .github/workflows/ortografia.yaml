@@ -1,3 +1,5 @@
+# Como desarrollador, no quiero que la memoria tenga faltas de ortografía.
+# Por eso, he creado un workflow que comprueba que la memoria tiene buena ortografía.
 name: "La memoria tiene buena ortografía"
 
 on:

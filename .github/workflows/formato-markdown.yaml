@@ -1,3 +1,5 @@
+# Como desarrollador, no me sé de memoria todas las reglas de markdown.
+# Por eso, he creado un workflow que comprueba que el formato de los archivos markdown es correcto.
 name: "Formato MarkDown correcto"
 
 on:

@@ -1,3 +1,7 @@
+// Como desarrollador, quiero tener un entorno de desarrollo que pueda
+// ejecutar en cualquier parte lo más rápido posible con las herramientas
+// necesarias para trabajar con LaTeX y Markdown.
+
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/cpp
 {
