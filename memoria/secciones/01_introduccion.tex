@@ -1,34 +1,80 @@
 \chapter{Introducción}
 
+Este Trabajo de Fin de Grado consiste en construir una solución software
+capaz de emitir, monitorizar y registrar una serie de eventos en un
+sistema de control hidráulico embebido. 
+
 Este proyecto es software libre, y está liberado con
-la licencia \cite{agplv3}.
-
-\section{Contexto}
-
-[ Describe el tamaño del mercado ]
-
-[ Describe el tamaño de nuestros clientes ]
-
-[ Describe cómo se ha trabajado tradicionalmente ]
-
-[ Describe cómo son los sistemas actuales ]
-
-[ Describe cómo se trabaja en el campo ]
-
-[ Describe cómo aportamos valor a los clientes ]
-
-[ Describe los problemas que suelen surgir relacionados
-con estas máquinas ]
+la licencia \textbf{GNU Affero General Public License} \cite{agplv3}.
 
 \section{Motivación}
 
-[ Describe resumidamente el problema a resolver ]
+En España el mercado de los cultivos leñosos supone un ??? del PIB
+anual, siendo un sector que emplea a más de ??? personas. [cita] Entre estos
+predominan el cultivo de olivos, almendros, pistachos, cítricos y
+viñedos. [cita] 
 
-[ Describe por qué es importante este proyecto ]
+La explotación de estas plantaciones se realiza mayoritariamente por personas
+físicas y no por empresas. [cita] La profesionalización de los propietarios
+es creciente, pero baja. [cita] A su vez ocurre que no existe una renovación
+de los jefes de explotación, con un porcentaje de gestores menores de 45 años
+inferior al 40\%. La formación reglada específica de los jefes en el caso de
+las explotaciones agrarias es inferior al 25\% en todas las comarcas españolas,
+llegando a menos del ??? en aquellas regiones con mayor
+explotación de este tipo de cultivos. [cita] Encontramos la mayor superficie
+de cultivos leñosos en la mitad sur de la península, destacando Andalucía,
+Castilla la Mancha y Extremadura. [cita INE https://storymaps.arcgis.com/stories/6fa8c26ecbde4fd99a0446e874c64898]
 
-[ Describe por qué es importante para mi empresa ]
+Desgraciadamente, el bajo nivel de automatización y de inversión por parte
+de los propietarios de las explotaciones agrarias hace que la rentabilidad
+de estos haya disminuido en los últimos años. [cita]
+El sector de la
+mecanización de este tipo de cultivos ha crecido en los últimos años de una
+forma lenta y con algunas pausas, dado el alto coste de la maquinaria, la
+falta de emprendimiento en el sector y el hecho de que la mayoría de las
+explotaciones son de pequeño tamaño. [cita] 
 
-[ Describe por qué es importante liberarlo ]
+Dos terceras partes del
+coste de este tipo de cultivos van destinados a la recolección y a la poda.
+[cita https://centroliva.com/mecanizacion-de-la-recoleccion-del-olivar-desde-la-investigacion-hasta-la-industria/]
+Entre las soluciones mecanizadas
+para la recolección encontramos principalmente los vibradores y los paraguas,
+mientras que para la poda encontramos las tijeras eléctricas, las sierras y
+las trituradoras. [cita]
+
+Son muchos los jefes de explotación que deciden externalizar la recolección
+de sus cultivos a empresas especializadas. [cita?] Ocurre un problema en este
+caso, y es que el jefe de explotación deja de tener la certeza de que la
+recolección se ha realizado de forma correcta, y de que la cantidad de producto
+recolectado es la que se espera. Este problema sucede también en otros
+contextos, como el de grandes fincas profesionalizadas.
+
+Dada la desconfianza de muchos de los participantes del sector a la investigación y
+el desarrollo de nuevas formas de producción y maquinaria agrícola creo que
+es importante demostrar la efectividad de las soluciones por medio de los hechos.
+[ a lo mejor sobra, o debería ir en otro sitio ]
+
+\section{Objetivo}
+
+Este proyecto busca desarrollar una solución software que permita
+registrar, exportar y visualizar información sobre la recolección de cultivos
+leñosos con paraguas vibradores según el criterio de nuestro cliente,
+con la restricción de que pueda ejecutarse en una plataforma
+hardware ya distribuida en el mercado.
+
+Entre otros objetivos secundarios se encuentran:
+
+\begin{enumerate}
+    \item Automatización de los procesos de desarrollo y despliegue de la solución, como es
+    la generación de documentación, la ejecución de pruebas, la generación de librerías
+    y el despliegue en la plataforma hardware.
+    \item Escribir código que cumpla los estándares de la industria para maquinaria pesada,
+    asegurando que no puedan ocurrir situaciones inesperadas en tiempo de ejecución que puedan
+    comprometer la integridad del código de control, que se ejecutará sobre la misma plataforma
+    hardware.
+    \item Generar una documentación adecuada para que cualquier desarrollador pueda entender,
+    mantener y ampliar este proyecto en el futuro.
+\end{enumerate}
 
 \section{Estructura del documento}
 

@@ -10,3 +10,10 @@ urlcolor
 GitHub
 Nuxeo
 bibliografia
+Affero
+PIB
+Andalucía
+Extremadura
+INE
+emprendimiento
+externalizar
