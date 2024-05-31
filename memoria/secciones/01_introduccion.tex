@@ -1,13 +1,15 @@
 \chapter{Introducción}
 
 Este Trabajo de Fin de Grado consiste en construir una solución software
-capaz de emitir, monitorizar y registrar una serie de eventos en un
-sistema de control hidráulico embebido. 
+capaz de registrar, exportar y visualizar información sobre la recolección de cultivos
+leñosos haciendo uso de un sistema de control embebido.
 
 Este proyecto es software libre, y está liberado con
 la licencia \textbf{GNU Affero General Public License} \cite{agplv3}.
 
 \section{Motivación}
+
+[ BORRADOR ]
 
 En España el mercado de los cultivos leñosos supone un ??? del PIB
 anual, siendo un sector que emplea a más de ??? personas. [cita] Entre estos
@@ -54,28 +56,86 @@ contextos, como el de grandes fincas profesionalizadas.
 
 \section{Objetivo}
 
-Este proyecto busca desarrollar una solución software que permita
+Este proyecto busca \textbf{desarrollar una solución software que permita
 registrar, exportar y visualizar información sobre la recolección de cultivos
-leñosos con paraguas vibradores según el criterio de nuestro cliente,
+leñosos con paraguas vibradores según los criterios de nuestro cliente},
 con la restricción de que el registro y el exportado pueda ejecutarse en
 una plataforma hardware ya distribuida en el mercado.
 
-Entre otros objetivos secundarios se encuentran:
+Este objetivo se sustenta en otros sub-objetivos, entre otros:
 
 \begin{enumerate}
-    \item Automatización de los procesos de desarrollo y despliegue de la solución, como es
+    \item \textbf{Automatización de los procesos de desarrollo y despliegue de la solución}, como es
     la generación de documentación, la ejecución de pruebas, la generación de librerías
-    y el despliegue en la plataforma hardware.
-    \item Escribir código que cumpla los estándares de la industria para maquinaria pesada,
+    y el despliegue en la plataforma hardware, \textbf{de forma que minimicemos el tiempo de feedback}
+    una vez realicemos un cambio y \textbf{de forma que tengamos una única fuente de verdad} acerca de cómo
+    validar y cómo desplegar.
+    \item \textbf{Código que cumpla los estándares de la industria para maquinaria pesada},
     asegurando que no puedan ocurrir situaciones inesperadas en tiempo de ejecución que puedan
     comprometer la integridad del código de control, que se ejecutará sobre la misma plataforma
     hardware.
-    \item Generar una documentación adecuada para que cualquier desarrollador pueda entender,
-    mantener y ampliar este proyecto en el futuro.
+    \item \textbf{Documentación adecuada para que cualquier desarrollador pueda entender,
+    mantener y ampliar este proyecto} en el futuro, de forma que maximicemos el atractivo
+    del proyecto y de forma que minimicemos la frustración de un contribuyente potencial
+    al proyecto de software libre.
 \end{enumerate}
 
 \section{Estructura del documento}
 
-[ Explica qué secciones tiene el documento y qué desarrollan ]
+Esta memoria refleja el proceso de desarrollo de la solución software.
+Cada una de las secciones expuestas representa una etapa del desarrollo.
+\textbf{Etapas posteriores se basan en las anteriores, y pueden corregirlas.}
 
-[ Explica el por qué de la elección ]
+\begin{enumerate}
+    \item \textbf{Introducción.} Donde exponemos el problema a resolver de forma general,
+    sus circunstancias actuales y los objetivos que se quieren alcanzar en rasgos generales.
+    \item \textbf{Problema a resolver.} Donde describimos el problema de una forma clara y concisa.
+    \begin{itemize}
+        \item Qué se quiere.
+        \item Quién va a interactuar con el programa.
+        \item Cómo se va a interactuar con el programa.
+    \end{itemize}
+    \item \textbf{Posibles arquitecturas.} Donde enumeramos las distintas soluciones plausibles
+    y elegimos una de ellas junto al cliente.
+    \begin{itemize}
+        \item Soluciones plausibles.
+        \item Solución negociada con el cliente.
+        \begin{itemize}
+            \item Objetivos.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Planificación.} Donde describimos cómo abordamos el desarrollo del problema,
+    estimamos el coste y el \textit{Time to Market}.
+    \begin{itemize}
+        \item Metodología.
+        \item Seguimiento.
+        \item Estimación.
+        \begin{itemize}
+            \item Tiempo.
+            \item Costes.
+            \item Riesgos.
+            \item Reunión con el cliente.
+        \end{itemize}
+        \item Registro de datos para los objetivos del sexto capítulo de esta memoria.
+    \end{itemize}
+    \item \textbf{Implementación.} Donde describimos cómo llevamos a cabo el desarrollo software
+    de la solución propuesta.
+    \begin{itemize}
+        \item Escucha y registro de eventos.
+        \item Almacenamiento en memoria persistente.
+        \item Extracción de datos.
+        \item Firma de los datos.
+        \item Transmisión de los datos.
+        \item Visualización de los datos.
+    \end{itemize}
+    \item \textbf{Comparación de los datos previos y posteriores al desarrollo.} Donde evaluamos la
+    calidad de nuestro primer análisis.
+    \begin{itemize}
+        \item Compara las estimaciones de tiempo con los datos reales.
+        \item Compara las estimaciones de coste con los datos reales.
+        \item Compara el problema inicial con el problema final.
+        \item Compara la solución propuesta con la solución final.
+    \end{itemize}
+    \item \textbf{Conclusión.} Donde realizamos una visita crítica a las ideas de los puntos
+    anteriores una vez finalizado el proyecto.
+\end{enumerate}
