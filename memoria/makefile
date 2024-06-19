@@ -6,7 +6,7 @@ TEXFILES := $(shell find . -name "*.tex")
 
 all: ortografia proyecto.pdf
 
-%.pdf: %.tex
+%.pdf: %.tex $(TEXFILES)
 	$(PDFLATEX) $< && bibtex $* && $(PDFLATEX) $< && $(PDFLATEX) $<
 
 clean:
