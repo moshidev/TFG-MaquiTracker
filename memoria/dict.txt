@@ -56,3 +56,5 @@ geopositioning
 pdf
 HD
 empatizar
+DevOps
+superconjunto

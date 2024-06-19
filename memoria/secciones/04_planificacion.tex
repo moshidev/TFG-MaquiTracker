@@ -11,6 +11,95 @@
 [ ¿Anexo sobre la historia de las distintas metodologías y
 filosofías de desarrollo de software? ]
 
+Para llevar a cabo este producto software intentaremos seguir algunas
+pautas que buscarán acortar nuestros tiempos de \textit{feedback}.
+
+\subsection{¿Por qué acortar los tiempos de \textit{feedback}?}
+
+Básicamente porque \textbf{cuanto antes detectamos que nos estamos equivocando
+antes podremos corregirlo}, y antes podremos seguir adelante.
+
+Pensemos en la situación de un enamorado sin experiencia que durante meses dedica su
+tiempo, su energía y su creatividad a componerle una canción a una chica.
+Durante este tiempo, este individuo mejora de forma objetiva la
+melodía, letra y sensaciones que la canción genera en sí mismo
+y en sus amistades. Ahora es un mejor compositor, tiene un mejor manejo
+de los instrumentos que utiliza e incluso ha mejorado su
+relación con sus amigos y su familia.
+
+El chico piensa que así puede despertar o avivar un sentimiento recíproco
+en la chica. Sin embargo, cuando se presenta la canción,
+la realidad se impone. Entre otros muchos factores,
+la falta de sincronización entre los sentimientos de ella y de él causan
+de forma instintiva un rechazo en ella.
+
+Esta analogía \textbf{la mostramos para ejemplificar lo absurdas e idealistas
+que son estas situaciones que se dan en otros campos de nuestra vida.}
+Productos excelentes desde un punto de vista técnico que se
+congelan porque no se discutió un precio objetivo con
+el cliente en una fase temprana del desarrollo, ideas felices
+por parte de \textit{stakeholders} sobre qué debe de
+ser capaz de hacer el software que terminan en años de desarrollo
+y con objetivos sin cumplir, etc.
+
+Si el chico le hubiese propuesto de quedar de una forma casual
+habría llegado a conocerla mejor\footnote{¡O no! A lo mejor ella no
+quiera quedar con él. Al chico le interesa
+conocer esta realidad lo antes posible.}. Podría haberse dado cuenta que
+ella no está acostumbrada a salir mucho de casa, que buscando sitios
+interesantes con los que pasar tiempo con ella tal vez podría ganar su
+confianza, y su cariño. Podría haber probado esta hipótesis, y cambiar
+su estrategia según el \textit{feedback} que recibiría. Podría en este tiempo que
+pasan juntos darse cuenta que no es la chica adecuada para él. Podría
+incluso haberse dado cuenta que, la idea de la canción, podría ser buena
+bajo unas determinadas circunstancias.
+
+Los autores de \cite{accelerate} divulgan cómo afectan los tiempos de feedback
+a los productos software. Nos centramos en los capítulos dedicados al impacto de
+la entrega continua y al impacto de la entrega continua%
+\footnote{%
+Superconjunto de la integración continua. Básicamente consiste en la automatización
+del proceso de desarrollo. \cite{ModernSoftwareEngineering} y \cite{minimumViableCD}
+son buenos recursos para aprender más acerca de estos conceptos.%
+}%
+en la calidad. Según escriben, \textbf{existe una correlación estadística alta entre aquellos
+equipos capaces de desplegar a producción a demanda y 
+con mecanismos que ofrecen de forma clara un \textit{feedback} rápido en
+la calidad y en la capacidad del software de desplegarse y entre el rendimiento del
+equipo.}
+
+El equipo DORA\footnote{DevOps Research and Assessment.} coincide en estos resultados.
+En su publicación \cite{EliteDevOps} explican cuatro métricas que pueden medir el
+rendimiento de una organización. Según explican en la entrada de blog citada,
+la frecuencia de despliegue, el tiempo que tarda un commit desde que se sube
+al servidor hasta que se lleva a producción,
+el porcentaje de despliegues que causan un error en producción y el tiempo
+que tarda una organización en recuperarse de un error son clave \textbf{para medir la
+velocidad y la estabilidad en el desarrollo}.
+
+\subsection{Productos para disminuir el tiempo de realimentación}
+
+\begin{enumerate}
+    \item \textbf{Automatización de los procesos de desarrollo y despliegue de la solución}, como es
+    la generación de documentación, la ejecución de pruebas, la generación de librerías
+    y el despliegue en la plataforma hardware, \textbf{de forma que minimicemos el tiempo de \textit{feedback}}
+    una vez realicemos un cambio y \textbf{de forma que tengamos una única fuente de verdad} acerca de cómo
+    validar y cómo desplegar.
+\end{enumerate}
+
+\subsection{Productos para mejorar la calidad del producto}
+
+\begin{enumerate}
+    \item \textbf{Pruebas software unitarias para cada funcionalidad implementada} que aseguren que no
+    puedan ocurrir situaciones inesperadas en tiempo
+    de ejecución que puedan comprometer la integridad del código de control, que se ejecutará sobre
+    la misma plataforma hardware.
+    \item \textbf{Documentación adecuada para que cualquier desarrollador pueda entender,
+    mantener y ampliar este proyecto} en el futuro, de forma que maximicemos el atractivo
+    del proyecto y de forma que minimicemos la frustración de un contribuyente potencial
+    al proyecto de software libre.
+\end{enumerate}
+
 \section{Temporización}
 
 [ Describe una planificación del tiempo de desarrollo del proyecto ]
