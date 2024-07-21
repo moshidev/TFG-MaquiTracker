@@ -19,6 +19,7 @@
 \usepackage{enumerate}
 \usepackage{hyperref}
 \usepackage{graphicx}
+\graphicspath{{imágenes/}}
 \usepackage{tabularx}
 \usepackage{booktabs}
 
@@ -63,7 +64,6 @@
 \setcounter{secnumdepth}{4}
 \usepackage[Lenny]{fncychap}
 
-
 \begin{document}
 	% Plantilla portada UGR
 	\input{portada/portada}
@@ -77,18 +77,18 @@
 
 	% Introducción
 	\input{secciones/01_introduccion}
-
+	
+	\input{secciones/02_planificacion}
+	
 	% Descripción del problema y hasta donde se llega
-	\input{secciones/02_problema_a_resolver.tex}
+	\input{secciones/03_problema_a_resolver.tex}
 
 	% Arquitectura del sistema
 	% 1. Análisis del problema
 	% 2. Posibles arquitecturas
 	% 3. Arquitectura elegida junto al cliente
-	\input{secciones/03_arquitectura}
-
-	\input{secciones/04_planificacion}
-
+	\input{secciones/04_arquitectura}
+	
 	\input{secciones/05_implementacion}
 
 	\input{secciones/06_comparacion_datos}
