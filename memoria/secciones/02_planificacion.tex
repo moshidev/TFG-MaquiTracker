@@ -10,15 +10,9 @@ valor.
 \textbf{A lo largo de este Trabajo de Fin de Grado exponemos diversos métodos para minimizar
 el tiempo invertido en tareas sin valor para nuestro propósito}.
 
-% Objeto: Describir cómo planeamos organizar el trabajo, y qué categorías vamos a cubrir
-
-% Categorías a cubrir:
-% 1. Definición de objetivos.
-% 2. Plan y método para llegar a los objetivos. (Trunk Based, Continuous Delivery, Design Thinking)
-% 2.1 Tanto para implementación, como para memoria, como para obtención de métricas.
-% 3. Estimación de costes
-
 \section{Método para descubrir las tareas a realizar}
+
+
 
 \section{Método para descubrir el problema a resolver}
 
@@ -44,7 +38,7 @@ el análisis previo o como complementario del análisis continuo, pero también 
 otros objetivos como el de transmitir confianza al cliente o el de ayudarnos como empresa a
 decidir si esta será una batalla en la que nos gustaría e interesaría participar.
 
-\textbf{Como primer paso tenemos que el cliente comunique su necesidad.} Sólo por el hecho de que esta
+\textbf{El primer paso es que el cliente comunique su necesidad.} Sólo por el hecho de que esta
 persona física o jurídica está depositando confianza en nosotros merece el más
 adecuado respeto, que se demuestra dejándole el espacio que necesita para exponer
 sus ideas. De esta descripción extraemos información verbal y
@@ -53,7 +47,7 @@ problema a resolver, y en caso de no ser un cliente de confianza o desconocer la
 circunstancias en que se desenvuelve el problema, si como empresa nos interesa
 ser un proveedor de soluciones para él y su sector.
 
-De una forma atenta, pero crítica, escuchamos y anotamos la información que el
+De una forma atenta \textbf{y crítica} escuchamos y anotamos la información que el
 cliente quiere transmitirnos. Si existe algún término que enuncia y desconocemos
 o alguna circunstancia que nos describe y que no llegamos a comprender o bien le
 interrumpimos o bien anotamos para preguntar más adelante.
@@ -77,13 +71,26 @@ o por medio del método dialéctico. El interesado desmiente aquellos aspectos
 pertinentes y saca a la luz nuevas necesidades y restricciones que no se habían
 comunicado.
 
-[ Tercer paso: formalización de las conversaciones por medio de las herramientas.
-Explica que lo hacemos por ejemplificar, pero que el uso de estas herramientas
-dependerá en nuestros conocimientos del sector, en el tamaño y toma del contacto
-del sector de nuestro equipo, en la complejidad del problema y en el nivel de intuición
-que podamos tener en este ]
+\textbf{El último paso consiste en formalizar las conversaciones} por medio de las
+herramientas que estimemos según las circunstancias\footnote{%
+    No utilizaremos las mismas herramientas y documentos para un cliente para el cual
+    sabemos por experiencia qué es lo que quiere que para otro que nos exige resolver
+    un problema de un sector y aplicación que desconocemos. También variamos según
+    la capacitación técnica del cliente en nuestro dominio.
+}. De esta forma, por medio de comunicaciones escritas, resolvemos el problema de
+sincronizarnos con el cliente.
 
-\subsection{Design Thinking}
+Por ejemplo, para los productos que desarrollamos en nuestro TFG, sabemos por experiencia
+que para nuestros clientes y dado nuestro conocimiento en el sector el punto dulce está
+en hacer un único documento en el que describimos hitos a alcanzar en el desarrollo.
+Estos hitos los desglosamos en descripciones claras y concisas acerca del comportamiento del software.
+A este documento lo llamamos \textbf{Plan de Desarrollo}.
+
+Gracias a este documento el cliente puede darse
+cuenta rápidamente de que estamos dedicando tiempo de desarrollo a un aspecto que no le
+interesa desarrollar ahora mismo. Porque puede conocer en todo momento el estado del desarrollo.
+
+\subsection{\textit{Design Thinking}}
 
 %[ Explica en términos generales Design Thinking. ]
 %[ Explica por qué la técnica del Design Thinking puede ayudarnos a este propósito ]
@@ -109,23 +116,27 @@ que podamos tener en este ]
 \subsection{Requisitos no funcionales}
 
 
-\section{Metodo para el desarrollo software}
+\section{Método para el desarrollo software}
 
-[ Describe Trunk Based Development ]
-
-[ Describe Continuous Delivery ]
-
-[ Explica el por qué de la elección ]
-
-[ ¿Anexo sobre la historia de las distintas metodologías y
-filosofías de desarrollo de software? ]
+%[ Describe Trunk Based Development ]
+%[ Describe Continuous Delivery ]
+%[ Explica el por qué de la elección ]
+%[ ¿Anexo sobre la historia de las distintas metodologías y
+%filosofías de desarrollo de software? ]
 
 Para llevar a cabo este producto software intentaremos seguir algunas
-pautas que buscarán acortar nuestros tiempos de \textit{feedback}.
+pautas que buscarán acortar nuestros tiempos de \textit{feedback}\footnote{%
+    Aunque sin acortar \textit{todos} los tiempos de \textit{feedback}. Muchas son las
+    veces en que nos interesa no recibir esa realimentación porque provocaría
+    algún cambio no deseado en el ámbito que queremos influir. Nos referimos
+    principalmente a métodos que ayudan a descubrir defectos en el producto
+    \textit{software} lo antes posible, de forma que no afecten en el ámbito en el que
+    queremos influir con nuestro producto.
+}.
 
 \subsection{¿Por qué acortar los tiempos de \textit{feedback}?}
 
-Básicamente porque \textbf{cuanto antes detectamos que nos estamos equivocando
+\textbf{Cuanto antes detectamos que nos estamos equivocando
 antes podremos corregirlo}, y antes podremos seguir adelante.
 
 Pensemos en la situación de un enamorado sin experiencia que durante meses dedica su
@@ -142,7 +153,7 @@ la realidad se impone. Entre otros muchos factores,
 la falta de sincronización entre los sentimientos de ella y de él causan
 de forma instintiva un rechazo en ella.
 
-Esta analogía \textbf{la mostramos para ejemplificar lo absurdas e idealistas
+\textbf{Esta analogía ejemplifica lo absurdas e idealistas
 que son estas situaciones que se dan en otros campos de nuestra vida.}
 Productos excelentes desde un punto de vista técnico que se
 congelan porque no se discutió un precio objetivo con
@@ -186,6 +197,8 @@ el porcentaje de despliegues que causan un error en producción y el tiempo
 que tarda una organización en recuperarse de un error son clave \textbf{para medir la
 velocidad y la estabilidad en el desarrollo}.
 
+\subsection{¿Por qué probar las premisas antes de desarrollar?}
+
 \subsection{Productos para disminuir el tiempo de realimentación}
 
 \begin{enumerate}
@@ -209,14 +222,14 @@ velocidad y la estabilidad en el desarrollo}.
     al proyecto de software libre.
 \end{enumerate}
 
+\section{Estimación de costes}
+
 \section{Temporización}
 
-[ Describe una planificación del tiempo de desarrollo del proyecto ]
-
-[ Explica el por qué de la elección ]
+%[ Describe una planificación del tiempo de desarrollo del proyecto ]
+%[ Explica el por qué de la elección ]
 
 \section{Seguimiento del desarrollo}
 
-[ Describe la plantilla de costes no recurrentes asociada al proyecto ]
-
-[ Explica el por qué de la elección ]
+%[ Describe la plantilla de costes no recurrentes asociada al proyecto ]
+%[ Explica el por qué de la elección ]
