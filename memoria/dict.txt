@@ -66,3 +66,5 @@ tetrarreactor
 Gulfstream
 cognoscentes
 incompletud
+LLC
+Schwaber

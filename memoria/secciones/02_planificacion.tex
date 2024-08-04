@@ -13,6 +13,12 @@ el tiempo invertido en tareas sin valor \textbf{para nuestro propósito}.\footno
     un avión de negocios Gulfstream G800 que una avioneta Cessna 172.
 }
 
+Nos servimos de distintos métodos para descubrir, esclarecer y categorizar el conocimiento que necesitamos
+para desarrollar un sistema informático: correcta identificación del problema a resolver,
+mejor solución posible teniendo en cuenta el entorno en el que se utilizará,
+y formulación de la solución de este en términos de datos objetivos acerca de cómo debe de
+funcionar un sistema.
+
 \section{Definiciones previas}
 
 Utilizamos determinadas acepciones definidas por \cite{RAE_DLE}.
@@ -28,6 +34,12 @@ para hallar la verdad y enseñarla.''
 
 Entendemos por \textbf{metodología} el ``conjunto de métodos que se siguen en una investigación
 científica o en una exposición doctrinal''.
+
+Entendemos por \textbf{tecnología} como el ``conjunto de teorías y de técnicas que permiten el
+aprovechamiento práctico del conocimiento científico''.
+
+Entendemos por \textbf{herramienta} como un ``instrumento que sirve para hacer algo o
+conseguir un fin''.
 
 \section{La importancia del método}
 
@@ -78,32 +90,63 @@ Gracias a que desglosa todas aquellas tareas y productos que podrían interesar 
 en un producto de calidad es más difícil que se nos olviden, más cuando tenemos poca experiencia
 o no tenemos todo memorizado.
 
-\section{Ágil no significa incompletud}
+\section{Ágil no es sinónimo de incompletud}
 
-% Quienes empiezan a programar los primeros ordenadores
-% Cuándo surge el movimiento de la artesanía de código
-% Cuándo surge el manifiesto ágil.
-% Argumenta por qué suele ser más costoso empezar a construir sin unos planos correctos
+Existen empresas e individuales que se dedican a vender información y formación a otras empresas
+o individuales. Es el caso de Robert C. Martin con su empresa Clean Coders, LLC. El caso de 
+Ken Schwaber con scrum.org. Es el caso de Kent Beck con sus conferencias y libros. Es el caso
+de Andy Hunt y Dave Thomas, \textit{los programadores pragmáticos}.
 
-\subsection{¿Cuando y por qué probar las premisas antes de desarrollar?}
+Estas y otras personas, las cuales se promulgan \textit{líderes} en sus respectivas metodologías,
+se reúnen en febrero de 2001 en un resort de ski para encontrar un nexo en común
+de sus acercamientos a la hora de desarrollar sistemas informáticos. Según se explica, este evento
+se empieza a cocinar en una quedada de defensores del \textit{Extreme Programming}.
+\textbf{Y agrupa a aquellos representantes de metodologías que en un principio 
+Martin bautiza como \textit{ligeras}}.
+\cite{HistoriaManifiestoAgilJim} \cite[Snowbird]{AgileBackToBasics}
 
-% A veces desconocemos si una solución va a ser efectiva
-% A veces podemos probar las premisas de una solución de una forma
-% menos costosa que desarrollar la solución
-% Premisas OK no implican buena solución. Premisas malas implican mala solución.
-% Tener en cuenta que tenemos que identificar las premisas correctamente.
+El manifiesto ágil \cite{ManifiestoAgil} surge de este encuentro. Expone las siguientes ideas.
 
-\section{Método para descubrir el problema a resolver}
+\begin{quote}
+    \itshape{
+    ``We are uncovering better ways of developing
+    software by doing it and helping others do it.
+    Through this work we have come to value:
+    
+    \textbf{Individuals and interactions} over processes and tools.
 
-Nos servimos de distintas herramientas para descubrir el conocimiento que necesitamos
-para desarrollar un sistema informático: correcta identificación del problema a resolver,
-mejor solución posible teniendo en cuenta el entorno en el que se utilizará,
-y formulación de la solución de este en términos de datos objetivos acerca de cómo debe de
-funcionar un sistema.
+    \textbf{Working software} over comprehensive documentation.
 
-Formulamos el problema haciendo uso de las fases de empatizar y definir del método
-\textit{Design Thinking} para después, tanto en un análisis previo como a medida
-que vamos desarrollando el proyecto, extraer historias de usuario, historias de
+    \textbf{Customer collaboration} over contract negotiation.
+
+    \textbf{Responding to change} over following a plan.
+    
+    That is, while there is value in the items on
+    the right, we value the items on the left more.''
+    }
+\end{quote}
+
+Según documentan las fuentes, firmantes del manifiesto ágil \cite{ManifiestoAgil}, 
+escriben el texto como contraposición a lo que observan en ciertas compañías a la
+hora de desarrollar software. Dicen, rehúsan de los procedimientos sin sentido,
+a los procedimientos sin un por qué. Alertan de que definitivamente dejarán de ser
+compatibles con la incipiente modernización del mercado (expansión del comercio en
+línea, compañías en línea, compañías web, etc). \cite{HistoriaManifiestoAgilJim}
+
+Dicen que llegan a estas conclusiones a partir de su experiencia \cite{HistoriaManifiestoAgilJim}
+y personalmente añadiría, \textit{y teniendo como objetivo la calidad del producto}.
+
+Evidentemente, en ningún lugar se habla de no utilizar procesos o herramientas.
+No se desprestigia a la documentación. No se le resta valor a la negociación
+de un contrato. No se busca no seguir un plan.
+
+El manifiesto es vago y no es exhaustivo.
+
+\section{Indagación y esclarecimiento del problema a resolver}
+
+Dialogamos con el cliente, formulamos el problema haciendo uso de las fases de
+empatizar y definir del método \textit{Design Thinking} para después, tanto en un análisis
+previo como a medida que vamos desarrollando el proyecto, extraer historias de usuario, historias de
 desarrollador y \textit{user journeys} de donde obtenemos los objetivos deseados
 junto a sus respectivas importancias.
 Finalmente sintetizamos esta información en forma de requisitos funcionales y
@@ -175,6 +218,8 @@ interesa desarrollar ahora mismo. Porque puede conocer en todo momento el estado
 %[ Explica por qué la técnica del Design Thinking puede ayudarnos a este propósito ]
 %[ Explica cómo adaptamos la técnica a nuestras necesidades. ]
 
+\section{Definición del problema a resolver}
+
 \subsection{Historias de usuario}
 
 %[ Enuncia problema que resuelven las historias de usuario ]
@@ -194,8 +239,23 @@ interesa desarrollar ahora mismo. Porque puede conocer en todo momento el estado
 
 \subsection{Requisitos no funcionales}
 
+\section{Elección de arquitectura}
 
-\section{Método para el desarrollo software}
+\subsection{Métodos para asegurar la validez de los planos}
+
+\subsubsection{Desglose}
+
+\subsubsection{Validación de premisas}
+
+% A veces desconocemos si una solución va a ser efectiva
+% A veces podemos probar las premisas de una solución de una forma
+% menos costosa que desarrollar la solución
+% Premisas OK no implican buena solución. Premisas malas implican mala solución.
+% Tener en cuenta que tenemos que identificar las premisas correctamente.
+
+%\subsubsection{¿Qué más?}
+
+\section{Implementación: desarrollo software}
 
 %[ Describe Trunk Based Development ]
 %[ Describe Continuous Delivery ]
