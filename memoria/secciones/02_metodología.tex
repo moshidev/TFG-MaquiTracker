@@ -142,6 +142,14 @@ de un contrato. No se busca no seguir un plan.
 
 El manifiesto es vago y no es exhaustivo.
 
+\section{Control de versiones}
+
+\subsection{Seguimiento de cambios sobre el repositorio}
+
+\subsection{El problema con los issues}
+
+\subsection{Uso de versionado semántico}
+
 \section{Indagación y esclarecimiento del problema a resolver}
 
 Dialogamos con el cliente, formulamos el problema haciendo uso de las fases de
@@ -175,11 +183,8 @@ o alguna circunstancia que nos describe y que no llegamos a comprender o bien le
 interrumpimos o bien anotamos para preguntar más adelante.
 
 \textbf{El segundo paso es identificar la raíz del problema.} Por experiencia sabemos
-que las personas tienden a enunciar los problemas en términos de la solución%
-%
-\footnote{[ Code Complete 2 ]
-}%
-. Muchas veces aquello que nos solicitan responde a una necesidad subyacente que no
+que las personas tienden a enunciar los problemas en términos de la solución.
+Muchas veces aquello que nos solicitan responde a una necesidad subyacente que no
 se identifica o, si identificada, no se comunica.
 
 Buscamos dialogando con el cliente y por medio de nuestra propia investigación exponer
@@ -212,34 +217,35 @@ Gracias a este documento el cliente puede darse
 cuenta rápidamente de que estamos dedicando tiempo de desarrollo a un aspecto que no le
 interesa desarrollar ahora mismo. Porque puede conocer en todo momento el estado del desarrollo.
 
-\subsection{\textit{Design Thinking}}
+\subsection{Contexto en el que se desarrolla el problema}
 
-%[ Explica en términos generales Design Thinking. ]
-%[ Explica por qué la técnica del Design Thinking puede ayudarnos a este propósito ]
-%[ Explica cómo adaptamos la técnica a nuestras necesidades. ]
+% Comprendemos quiénes son los usuarios objetivo del producto y cómo interacturarán
+% con el sistema
 
-\section{Definición del problema a resolver}
+\section{Definición del problema a resolver (definición de requisitos)}
 
-\subsection{Historias de usuario}
-
-%[ Enuncia problema que resuelven las historias de usuario ]
-%[ Describe cómo resuelve el problema la historia de usuario ]
-%[ Describe la esencia de una historia de usuario ]
-
-\subsection{Historias de desarrollador}
-
-%[ Bridge desde la historia de usuario hacia las historias de desarrollador ]
+% Explica que existen las HUs, pero que no las utilizamos por nuestra familiaridad
+% con el campo
 
 \subsection{\textit{User journeys}}
-
-%[ Igual que con las historias de usuario pero para las user stories y
-%los requisitos funcionales y no funcionales ]
 
 \subsection{Requisitos funcionales}
 
 \subsection{Requisitos no funcionales}
 
+\section{Elección de solución}
+
+% Relativamente trivial, explicamos un poco básicamente que tenemos que justificar
+% el por qué de un sistema informático y más o menos cómo lo vamos a plantear.
+
 \section{Elección de arquitectura}
+
+% La arquitectura restringirá muchos aspectos de nuestro proyecto. El hardware
+% sobre el que se ejecutará, el lenguaje de programación que utilizará y sus
+% herramientas disponibles (frameworks de testeo, depuración, generación de compilados,
+% capacidad para proteger la propiedad intelectual), si es un sistema distribuido
+% o si está en un único sitio, sin es una conjunción de librerías o es un único
+% ejecutable, etc.
 
 \subsection{Métodos para asegurar la validez de los planos}
 
@@ -257,12 +263,6 @@ interesa desarrollar ahora mismo. Porque puede conocer en todo momento el estado
 
 \section{Implementación: desarrollo software}
 
-%[ Describe Trunk Based Development ]
-%[ Describe Continuous Delivery ]
-%[ Explica el por qué de la elección ]
-%[ ¿Anexo sobre la historia de las distintas metodologías y
-%filosofías de desarrollo de software? ]
-
 Para llevar a cabo este producto software intentaremos seguir algunas
 pautas que buscarán acortar nuestros tiempos de \textit{feedback}\footnote{%
     Aunque sin acortar \textit{todos} los tiempos de \textit{feedback}. Muchas son las
@@ -272,6 +272,20 @@ pautas que buscarán acortar nuestros tiempos de \textit{feedback}\footnote{%
     \textit{software} lo antes posible, de forma que no afecten en el ámbito en el que
     queremos influir con nuestro producto.
 }.
+
+\subsection{Entrega continua}
+
+\subsubsection{\textit{Trunk Based Development}}
+
+\subsection{\textit{Test Driven Development}}
+
+% Qué es
+
+% Por qué (simplificación del diseño, requerimientos como código)
+
+% Cuándo utilizarlo y cuándo no (código demasiado desacoplado, puede aumentar
+% complejidad en casos en los que no es necesario testar comportamiento, nivel
+% de rigurosidad)
 
 \subsection{¿Por qué acortar los tiempos de \textit{feedback}?}
 
@@ -336,7 +350,7 @@ el porcentaje de despliegues que causan un error en producción y el tiempo
 que tarda una organización en recuperarse de un error son clave \textbf{para medir la
 velocidad y la estabilidad en el desarrollo}.
 
-\subsection{Productos para disminuir el tiempo de realimentación}
+\subsubsection{Productos para disminuir el tiempo de realimentación}
 
 \begin{enumerate}
     \item \textbf{Automatización de los procesos de desarrollo y despliegue de la solución}, como es
@@ -359,25 +373,26 @@ velocidad y la estabilidad en el desarrollo}.
     al proyecto de software libre.
 \end{enumerate}
 
-\section{Método para estimar los costes}
+\section{Planificación del desarrollo}
 
-%[ Describe la plantilla de costes no recurrentes asociada al proyecto ]
-%[ Explica el por qué de la elección ]
+% Cuánto tiempo dedicamos a cada sección.
 
+\section{Estimación de costes}
 
-\section{Método para seguir el desarrollo}
+% Desglose como piedra angular
+% Uso de datos pasados
+% Coste de oportunidad, recurrencia de soporte del proyecto
+
+\section{Seguimiento del desarrollo por parte del cliente}
 
 % Por qué
 % Commits en git
 % Plan de Desarrollo
 % Changelog
 
-\section{Estimación de costes}
-
-\section{Temporización}
+\section{Seguimiento del coste y tiempo dedicado al proyecto}
 
 % Por qué
-% Desglose como piedra angular
-% Uso de datos pasados para dar una estimación
-%[ Describe una planificación del tiempo de desarrollo del proyecto ]
-%[ Explica el por qué de la elección ]
+
+% Excel de horas dedicadas
+% Excel de costes asociados al proyecto
