@@ -68,3 +68,4 @@ cognoscentes
 incompletud
 LLC
 Schwaber
+SemVer
