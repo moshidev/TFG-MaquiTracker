@@ -157,7 +157,12 @@ recuperación.
 
 En el repositorio únicamente almacenamos estados correctos del proyecto. No
 almacenamos información que no sea relevante, como las que generan automáticamente
-algunas herramientas.
+algunas herramientas. Siempre reflexionamos antes de realizar \textit{vendoring}%
+\footnote{\textit{Vendoring} consiste en hacer copias de software de terceros en
+nuestro propio repositorio. Por ejemplo, no suele tener sentido para una dependencia en
+un paquete de \texttt{npm}. Se suele evitar hacer esto porque los software de control
+de versiones para software no se suelen llevar bien con los binarios y porque que el código será
+más difícil de actualizar.}.
 
 \subsection{Seguimiento de cambios sobre el repositorio}
 
@@ -171,6 +176,9 @@ lo que ha cambiado y por qué lo hemos hecho entonces tenemos distintas ventajas
     \item Cuando liberamos una versión podemos saber qué ha cambiado desde la última
           versión, pudiendo ofrecer al cliente un histórico de cambios.
 \end{enumerate}
+
+Por convención los mensajes que acompañarán a estas \textit{contribuciones} vienen
+dados en imperativo y serán claros y concisos, tal y como se propone en \cite[Commit Guidelines]{ProGIT}.
 
 Si además estos cambios son para modificar un único aspecto del repositorio
 entonces, además de potenciar los beneficios anteriores, tenemos las siguientes
@@ -189,6 +197,16 @@ ventajas entre otras.
 
 Imponemos sendas restricciones en nuestro repositorio.
 
+\subsection{Validez de los datos}
+
+¿Qué determina la validez del repositorio? Su capacidad de despliegue en cualquier
+momento de acuerdo a los requisitos que forman parte de los productos que componen
+el repositorio.
+
+No contribuimos en aquellos casos en los que no tenemos la certeza anterior.
+Automatizamos en aquellos casos en los que estimemos que sea rentable en tiempo
+y dinero.
+
 \subsection{Uso de versionado semántico}
 
 Los cambios sobre el repositorio siguen un orden cronológico.
@@ -201,7 +219,8 @@ El nombre que le asignamos tiene que tener la forma \texttt{v[VERSION]},
 donde \textit{\texttt{[VERSION]}} tiene la forma \texttt{[MAJOR].[MINOR].[PATCH]} y donde
 \textit{\texttt{[MAYOR]}}, \textit{\texttt{[MINOR]}} y \textit{\texttt{[PATCH]}} son números que se
 especifican según el esquema de versionado \textit{SemVer 2.0.0} \cite{SemVer}.
-Escogemos este esquema de versionado porque es sencillo y se puede entender de forma intuitiva.
+Escogemos este esquema de versionado porque es sencillo, buen conocido y se puede
+entender de forma intuitiva.
 
 \section{Indagación y esclarecimiento del problema a resolver}
 
