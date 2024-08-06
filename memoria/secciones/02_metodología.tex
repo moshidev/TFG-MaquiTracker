@@ -293,26 +293,75 @@ interesa desarrollar ahora mismo. Porque puede conocer en todo momento el estado
 
 Para poder cuantificar de una aproximada el potencial de proyecto y para, en caso de que el
 proyecto nos interese, formular los requisitos desde el punto de vista de los clientes que
-interacturarán con nuestro producto, investigamos acerca del contexto que rodea al problema.
+interactuarán con nuestro producto, investigamos acerca del contexto que rodea al problema.
 
 Descubrimos quiénes son los usuarios objetivo de nuestros productos y en qué contexto
 interactuarían con el sistema.
 
+\subsection{Investigación de los últimos avances (\textit{state-of-the-art})}
+
+Investigamos si existen o no soluciones existentes para el problema. Si las existen,
+las evaluamos y estudiamos su enfoque.
+
 \section{Definición del problema a resolver (definición de requisitos)}
 
-% Explica que existen las HUs, pero que no las utilizamos por nuestra familiaridad
-% con el campo
+Definimos en forma de requisitos funciones y no funcionales cómo debe de comportarse el
+sistema. Lo hacemos así porque nuestra experiencia nos dice que suele ser suficiente
+para este tipo de proyectos. En caso de esto no fuese suficiente o
+que trabajásemos con más gente y el proyecto tuviese un riesgo superior plantearíamos
+trabajar con otro tipo de herramientas como son las historias de usuario, de desarrollador
+o \textit{user journeys}, por ejemplo.
 
-\subsection{\textit{User journeys}}
+Buscamos especificar en detalle lo que el sistema informático tiene que hacer, aunque no
+cómo tiene que hacerlo. De esta forma no restringimos de forma innecesaria
+las posibles soluciones de diseño o de Implementación que podamos encontrar.
+
+Una correcta y completa definición de requisitos nos ayudará a poner en común con nuestro
+cliente nuestra visión del sistema, esta vez de una forma más concreta. Dialogamos y corregimos
+aquellos defectos o excesos que encontremos junto a él\footnote{%
+    Puede que existan cambios de requisitos por parte de nuestro cliente. Muchas veces se
+    apela a la continua transformación del entorno, pero también hay otros factores que influyen.
+    Como el que, al igual que según nosotros vamos desarrollando el proyecto vamos entendiéndolo
+    mejor, a nuestro cliente le pasa igual.
+}.
+
+Los requisitos que definimos probablemente no serán definitivos. Comunicamos al cliente nuestra
+capacidad para cambiar un requisito según el tipo y que el coste de cambiarlos, cuanto más
+avanzado esté el desarrollo, será muy superior\footnote{%
+Tanto coste de tiempo, de dinero, como de oportunidad. Por ejemplo, \cite{CodeComplete2} habla
+acerca de la evolución de estos costes.%
+}.
 
 \subsection{Requisitos funcionales}
 
+Un requisito funcional determina qué debe de hacer un sistema informático en unas determinadas circunstancias.
+
+Siguiendo las recomendaciones de \cite[Checklist: Requirements]{CodeComplete2} establecemos
+los siguientes requisitos para aceptar un requisito funcional.
+
+\begin{itemize}
+    \item Si desconocemos algún aspecto, lo explicitamos.
+    \item Las salidas y las entradas deben estar especificadas.
+    \item Si corresponde, las interfaces software y hardware deben
+          estar especificadas.
+    \item Si corresponde, los mecanismos de comunicación deben estar
+          especificadas.
+\end{itemize}
+
 \subsection{Requisitos no funcionales}
 
-\section{Elección de solución}
+Un requisito no funcional determina cómo debe de actuar un sistema informático ante un estímulo en unas determinadas circunstancias.
 
-% Relativamente trivial, explicamos un poco básicamente que tenemos que justificar
-% el por qué de un sistema informático y más o menos cómo lo vamos a plantear.
+Siguiendo las recomendaciones de \cite[Checklist: Requirements]{CodeComplete2} establecemos
+los siguientes requisitos para aceptar un requisito no funcional. 
+
+\begin{itemize}
+    \item Si desconocemos algún aspecto, lo explicitamos.
+    \item El tiempo de respuesta del sistema ante el usuario debe estar especificado.
+    \item El nivel de seguridad debe quedar especificado.
+    \item La fiabilidad dado un fallo (estrategias para detectar errores, recuperar información. etc.) debe estar especificada.
+    \item Si corresponde, los requisitos de memoria y de almacenamiento persistente deben quedar especificados.
+\end{itemize}
 
 \section{Elección de arquitectura}
 
