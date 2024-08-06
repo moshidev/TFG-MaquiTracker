@@ -136,19 +136,68 @@ línea, compañías en línea, compañías web, etc). \cite{HistoriaManifiestoAg
 Dicen que llegan a estas conclusiones a partir de su experiencia \cite{HistoriaManifiestoAgilJim}
 y personalmente añadiría, \textit{y teniendo como objetivo la calidad del producto}.
 
-Evidentemente, en ningún lugar se habla de no utilizar procesos o herramientas.
+El manifiesto es vago y no es exhaustivo, pero en ningún lugar se habla de no utilizar
+procesos o herramientas.
 No se desprestigia a la documentación. No se le resta valor a la negociación
-de un contrato. No se busca no seguir un plan.
+de un contrato. No busca no seguir un plan.
 
-El manifiesto es vago y no es exhaustivo.
+\section{Uso de un repositorio}
 
-\section{Control de versiones}
+Entendemos un repositorio como un lugar en el que almacenamos información.
+En nuestro caso, información digital. Principalmente documentación, recursos
+gráficos y código.
+
+Utilizamos un único repositorio para facilitar el asegurar la coherencia
+de los datos, mejorar la cohesión y organización de estos y facilitar su
+recuperación.
+
+En el repositorio únicamente almacenamos estados correctos del proyecto. No
+almacenamos información que no sea relevante, como las que autogeneran algunas
+herramientas.
 
 \subsection{Seguimiento de cambios sobre el repositorio}
 
-\subsection{El problema con los issues}
+Sabemos que si a cada modificación que hacemos en el repositorio anotamos
+lo que ha cambiado y por qué lo hemos hecho entonces tenemos distintas ventajas.
+
+\begin{enumerate}
+    \item Sabiendo la razón por la que se realiza un cambio ayudamos a entender
+          el cambio a un tercero, o a nuestro yo del futuro.
+    \item Podemos visitar estados anteriores del proyecto.
+    \item Cuando liberamos una versión podemos saber qué ha cambiado desde la última
+          versión, pudiendo ofrecer al cliente un histórico de cambios.
+\end{enumerate}
+
+Si además estos cambios son para modificar un único aspecto del repositorio
+entonces, además de potenciar los beneficios anteriores, tenemos las siguientes
+ventajas entre otras.
+
+\begin{enumerate}
+    \item Deshacer cambios es más fácil.
+    \item Identificar cambios concretos es más fácil. Por ejemplo, encontrar cuándo se introduce un bug
+           es más fácil.
+    \item El proceso de fusionar dos repositorios divergentes puede ser mas fácil y cómodo.
+    \item La revisión por parte de un tercero, o por nosotros mismos, es mas clara.
+    \item Es más fácil encontrar un mensaje descriptivo y conciso que explique qué cambia y por qué.
+    \item Nos obliga a trabajar sobre un único aspecto del repositorio, lo que potencia nuestras
+          capacidades intelectuales.
+\end{enumerate}
+
+Imponemos sendas restricciones en nuestro repositorio.
 
 \subsection{Uso de versionado semántico}
+
+Los cambios sobre el repositorio siguen un orden cronológico.
+Si un determinado cambio es el último que se hace antes de
+liberar los productos que contienen el repositorio (por ejemplo,
+cuando alcanzamos un hito) entonces a este cambio le asignamos
+un nombre específico.
+
+El nombre que le asignamos tiene que tener la forma \texttt{v[VERSION]},
+donde \textit{\texttt{[VERSION]}} tiene la forma \texttt{[MAJOR].[MINOR].[PATCH]} y donde
+\textit{\texttt{[MAYOR]}}, \textit{\texttt{[MINOR]}} y \textit{\texttt{[PATCH]}} son números que se
+especifican según el esquema de versionado \textit{SemVer 2.0.0} \cite{SemVer}.
+Escogemos este esquema de versionado porque es sencillo y se puede entender de forma intuitiva.
 
 \section{Indagación y esclarecimiento del problema a resolver}
 
