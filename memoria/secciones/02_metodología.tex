@@ -403,8 +403,7 @@ de nuestro sistema que exponemos a continuación.\footnote{Partimos de la enumer
             Definimos un ataque informático como una vulneración de las políticas de
             interacción con sistema. Si no existen estas reglas nunca podrá haber un
             ataque informático porque no está definido lo que es uno.
-          }
-        \item \textbf{Protección de la propiedad intelectual}. 
+          } \textbf{Protección de la propiedad intelectual}.
     \item \textbf{Interoperabilidad}\footnote{Según el \texttt{BOE-A-2010-1331}, \textit{``la interoperabilidad
           es la capacidad de los sistemas de información y de los procedimientos a los que éstos dan soporte,
           de compartir datos y posibilitar el intercambio de información y conocimiento entre ellos''}.}. ¿Cómo compartirá nuestro software sus recursos con otros
@@ -442,31 +441,95 @@ distintas alternativas.
 
 \section{Implementación: desarrollo software}
 
-Para llevar a cabo este producto software intentaremos seguir algunas
-pautas que buscarán acortar nuestros tiempos de \textit{feedback}\footnote{%
-    Aunque sin acortar \textit{todos} los tiempos de \textit{feedback}. Muchas son las
-    veces en que nos interesa no recibir esa realimentación porque provocaría
-    algún cambio no deseado en el ámbito que queremos influir. Nos referimos
-    principalmente a métodos que ayudan a descubrir defectos en el producto
-    \textit{software} lo antes posible, de forma que no afecten en el ámbito en el que
-    queremos influir con nuestro producto.
-}.
+Para la fase de construcción establecemos protocolos y métodos que maximizan
+la calidad de nuestro producto. Explicamos en qué consisten y por qué las
+aplicamos.
+
+En general, para llevar a cabo este producto software, buscaremos acortar nuestros
+tiempos de \textit{feedback}, aunque sin acortar \textit{todos} estos tiempos.%
+\footnote{%
+    \cite[Chapter 5: Feedback]{ModernSoftwareEngineering} enumera algunos campos en los
+    que nos interesa tener esta realimentación, bajo qué circunstancias y por qué.
+}%
+ Muchas son las
+veces en que nos interesa no recibir esa realimentación porque provocaría
+algún cambio no deseado en el ámbito que queremos influir. Nos referimos
+principalmente a métodos que ayudan a descubrir defectos en el producto
+\textit{software} lo antes posible, de forma que no afecten en el ámbito en el que
+queremos influir con nuestro producto.
+
+Si detectamos incoherencias, datos erróneos, o vemos que podemos mejorar
+la arquitectura y los requisitos, lo hacemos. Recordemos que fases posteriores
+pueden corregir a anteriores, y viceversa.
 
 \subsection{Entrega continua}
 
+La entrega continua es una filosofía de desarrollo que busca maximizar las
+siguientes aspectos en tanto que demuestran mejorar la calidad del producto
+y su velocidad de desarrollo. \cite{ModernSoftwareEngineering} \cite{minimumViableCD} \cite{ContinuousDelivery} \cite{accelerate}
+
+\begin{itemize}
+    \item \textbf{Comprobabilidad}. ¿Podemos comprobar el que nuestro proyecto, si se desplegase,
+          funciona según
+          los requerimientos especificados que forman parte de los productos que
+          entregamos?
+    \item \textbf{Desplegabilidad}. ¿Podría alguien ajeno a nuestro repositorio desplegar a
+          petición en cualquier momento nuestro proyecto a \textit{golpe de click}?
+          Aun cuando los productos a desplegar no estén listos para liberarse al cliente.
+    \item \textbf{Velocidad}. ¿Cuánto tiempo tardamos desde que realizamos un cambio y recibimos
+          realimentación acerca de este cambio?
+    \item \textbf{Reproducibilidad}. ¿Ya sea en una estación de desarrollo u otra, en la nube
+          o en un microcomputador, podemos replicar el comportamiento de nuestra solución?
+\end{itemize}
+
+\subsubsection{Productos para lograr la entrega continua}
+
+Por experiencia, después de haber probado una mayor cobertura y una
+menor cobertura de mecanismos, para proyectos de esta naturaleza
+consideramos suficientes los siguientes productos.
+
+\begin{enumerate}
+    \item \textbf{Automatización de los procesos de desarrollo y despliegue de la solución}, como es
+    la generación de documentación, la ejecución de pruebas, la generación de librerías
+    y el despliegue en la plataforma hardware, \textbf{de forma que minimicemos el tiempo de \textit{feedback}}
+    una vez realicemos un cambio y \textbf{de forma que tengamos una única fuente de verdad} acerca de cómo
+    se despliega, comprueba y monitoriza la solución.
+    \item \textbf{Pruebas software unitarias para cada funcionalidad implementada} que aseguren que no
+    puedan ocurrir situaciones inesperadas en tiempo
+    de ejecución que puedan comprometer la integridad del código de control, que se ejecutará sobre
+    la misma plataforma hardware.
+    \item \textbf{Documentación adecuada para que cualquier desarrollador pueda entender,
+    mantener y ampliar este proyecto} en el futuro, de forma que maximicemos el atractivo
+    del proyecto y de forma que minimicemos la frustración de un contribuyente potencial
+    al proyecto de software libre.
+\end{enumerate}
+
 \subsubsection{\textit{Trunk Based Development}}
 
-\subsection{\textit{Test Driven Development}}
+Los repositorios pueden divergir. Hay ciertas metodologías de desarrollo que
+sugieren crear una bifurcación en el repositorio a cada característica que se
+quiera implementar. Excepto en casos puntuales, como en el caso de las
+contribuciones por parte de desconocidos a nuestro proyecto, es una medida que
+probablemente sea contraproducente. Seguimos una única rama de desarrollo.
 
-% Qué es
+El estudio que divulga \cite{accelerate} apoya nuestras ideas.
 
-% Por qué (simplificación del diseño, requerimientos como código)
+\begin{quote}
+    \textit{%
+    ``Trunk-based development has been shown to be a predictor of high
+    performance in software development and delivery. It is characterized
+    by fewer than three active branches in a code repository; branches and
+    forks having very short lifetimes (e.g., less than a day) before being
+    merged; and application teams rarely or never having “code lock” periods
+    when no one can check in code or do pull requests due to merging conflicts,
+    code freezes, or stabilization phases''.
+    }
+\end{quote}
 
-% Cuándo utilizarlo y cuándo no (código demasiado desacoplado, puede aumentar
-% complejidad en casos en los que no es necesario testar comportamiento, nivel
-% de rigurosidad)
+Es un requisito imprescindible para cumplir la definición de integración continua.
+\cite{minimumViableCD}
 
-\subsection{¿Por qué acortar los tiempos de \textit{feedback}?}
+\subsubsection{¿Por qué acortar los tiempos de \textit{feedback}?}
 
 \textbf{Cuanto antes detectamos que nos estamos equivocando
 antes podremos corregirlo}, y antes podremos seguir adelante.
@@ -529,28 +592,101 @@ el porcentaje de despliegues que causan un error en producción y el tiempo
 que tarda una organización en recuperarse de un error son clave \textbf{para medir la
 velocidad y la estabilidad en el desarrollo}.
 
-\subsubsection{Productos para disminuir el tiempo de realimentación}
+\subsection{\textit{Test Driven Development}}
 
-\begin{enumerate}
-    \item \textbf{Automatización de los procesos de desarrollo y despliegue de la solución}, como es
-    la generación de documentación, la ejecución de pruebas, la generación de librerías
-    y el despliegue en la plataforma hardware, \textbf{de forma que minimicemos el tiempo de \textit{feedback}}
-    una vez realicemos un cambio y \textbf{de forma que tengamos una única fuente de verdad} acerca de cómo
-    validar y cómo desplegar.
-\end{enumerate}
+% Qué es
 
-\subsection{Productos para mejorar la calidad del producto}
+\subsubsection{¿Por qué?}
 
-\begin{enumerate}
-    \item \textbf{Pruebas software unitarias para cada funcionalidad implementada} que aseguren que no
-    puedan ocurrir situaciones inesperadas en tiempo
-    de ejecución que puedan comprometer la integridad del código de control, que se ejecutará sobre
-    la misma plataforma hardware.
-    \item \textbf{Documentación adecuada para que cualquier desarrollador pueda entender,
-    mantener y ampliar este proyecto} en el futuro, de forma que maximicemos el atractivo
-    del proyecto y de forma que minimicemos la frustración de un contribuyente potencial
-    al proyecto de software libre.
-\end{enumerate}
+\subsubsection{¿Por qué no modelar los datos con anterioridad?}
+% Por qué (simplificación del diseño, requerimientos como código)
+
+% Por qué no DDD
+
+\subsubsection{¿Cuándo tiene sentido aplicar TDD?}
+
+% Cuándo utilizarlo y cuándo no (código demasiado desacoplado, puede aumentar
+% complejidad en casos en los que no es necesario testar comportamiento, nivel
+% de rigurosidad)
+
+\subsubsection{Cómo llego a la conclusión de utilizar TDD como piedra angular para mis proyectos}
+
+El 29 de agosto del 2023 escribo el siguiente hilo de mensajes en SWAD.
+
+\begin{quote}
+``\itshape{%
+    Me hubiese gustado que Stroganoff hubiese sido menos vago en su exposición dado
+    que la orientación a objetos da mucho más de lo que hablar.
+
+    ¿Sabes qué? Un mes antes de empezar la carrera compré un ejemplar de segunda mano
+    del «Programming: Principles and Practice Using C++». \cite{Stroganoff} Aprendí a
+    programar en C++ a partir de ese libro. Una vez entendí cómo funcionan fundamentalmente
+    los streams, librería estándar, posibles retornos de error y templates (entre otras
+    muchas posibilidades divertidas del lenguaje), perdí el interés por la tecnología
+    (el lenguaje) y, dado que la complejidad de mis programas eran inherentemente altos,
+    en el segundo año de carrera empecé a interesarme por Plan9 \cite{Plan9} y el
+    Código Limpio \cite{CleanCode} entre otros.
+
+    Estas publicaciones junto a este libro despertaron otras inquietudes. A destacar,
+    diseño de interfaces, «claridad» del código, planificación de desarrollo de software,
+    etc. Paralelamente, al encontrar en las redes un sentimiento de aversión generalizado
+    ante las metodologías ágiles, habiendo escuchado lo que Robert Cecil Martin opinaba
+    acerca de las susodichas, decidí leerme el libro «Clean Agile: Back to Basics» \cite{AgileBackToBasics}.
+
+    ¡Cuál fue mi sorpresa! ¡Al igual que ocurre con las Sagradas Escrituras, todo el mundo 
+    habla de sus contenidos, pero nadie visita ni estudia los originales!
+
+    Aprendí a escribir «código limpio». Apliqué gran parte de la convención de estilo.
+    \textbf{Los problemas se transformaron}. Aun así seguí aplicándolo, puesto que
+    prefería los problemas nuevos a los antiguos. Además, pertenecía a la selecta y
+    superior élite de limpiadores de código, o esa sensación me causaba.
+
+    Durante este tiempo intenté varias veces aprender TDD a través de Internet. Una
+    experiencia bastante frustrante y hueca. Decidí estudiar «Test-Driven Development
+    by Example» \cite{TDD}.
+
+    «Al conocer esto, el estudiante alcanzó la iluminación».
+
+    Empecé a sostener la siguiente tesis: \textbf{OOP funciona (más o menos) en tanto
+    que obliga a definir interfaces}. No por añadir distracciones a los lenguajes las
+    reglas que codificamos en software dejarán de ser inherentemente complejas.
+    Sin embargo, una buena interfaz sí permitirá a nuestro cerebro saber qué se espera
+    que nos tiene que devolver un servicio, y si nos lo está devolviendo correctamente.
+    En muchas ocasiones, \textbf{TDD es una herramienta que ayuda a encontrar esas
+    interfaces}.
+
+    Hoy día escribo mis programas en C, la mayoría del tiempo sin necesitar reservar
+    memoria dinámica más que en casos muy concretos en los que tenga que lidiar con
+    ciertos servicios reentrantes o no sepa requerimientos en tiempo de compilación
+    (en parte esto es gracias a los dominios con los que suelo trabajar). Dada una
+    de mis muchas unidades de código, según voy escribiendo tests para esta, mi
+    programa se simplifica y la interfaz se vuelve más clara.
+
+    Cuando las reglas del juego cambian para mi cliente sé que tendré que ofrecerle
+    una solución ante sus nuevos problemas. Sé que ocurrirán regresiones en cada nuevo
+    lanzamiento. Compruebo cómo mis flujos de Integración Continua las detectan y las arreglo.
+
+    Poco a poco la programación deja de tener mística, doctrina y emoción, y pasa a
+    convertirse en algo mundano, tranquilo y aburrido.
+
+    Comparto algunos recursos interesantes.
+
+    \url{https://www.youtube.com/watch?v=tD5NrevFtbU}
+
+    \url{https://www.youtube.com/@ContinuousDelivery/videos}
+
+    \url{http://electronvector.com/how-to-use-ceedling-for-embedded-test-driven-development}
+
+    \url{https://www.youtube.com/watch?v=xmiXmN6Rf3M}
+
+    \url{http://www.catb.org/~esr/writings/unix-koans/}
+
+    \url{https://web.mit.edu/~simsong/www/ugh.pdf}%
+}''
+\end{quote}
+
+
+\subsection{Entregas incrementales, no iterativas}
 
 \section{Planificación del desarrollo}
 
