@@ -71,3 +71,6 @@ Schwaber
 SemVer
 vendoring
 npm
+búferes
+interoperabilidad
+BOE

@@ -378,28 +378,67 @@ los siguientes requisitos para aceptar un requisito no funcional.
     \item Si corresponde, los requisitos de memoria y de almacenamiento persistente deben quedar especificados.
 \end{itemize}
 
-\section{Elección de arquitectura}
+\section{Diseño de la arquitectura}
 
-% La arquitectura restringirá muchos aspectos de nuestro proyecto. El hardware
-% sobre el que se ejecutará, el lenguaje de programación que utilizará y sus
-% herramientas disponibles (frameworks de testeo, depuración, generación de compilados,
-% capacidad para proteger la propiedad intelectual), si es un sistema distribuido
-% o si está en un único sitio, sin es una conjunción de librerías o es un único
-% ejecutable, etc.
+Cuando hablamos de arquitectura nos referimos a la forma de nuestra solución en términos generales.
+Establecemos criterios que afectarán de forma determinante al resto del proyecto.\footnote{
+    Por ejemplo, si el problema exige construir un coche pero empezamos construyendo una bicicleta probablemente acabemos
+    teniendo que reconstruir una gran parte del proyecto cuando se imponga la realidad.
+    Una solución enfocada como conjunción de librerías será muy diferente a la de un único ejecutable.
+}
 
-\subsection{Métodos para asegurar la validez de los planos}
+La arquitectura define tanto sus interfaces con el exterior como sus interfaces entre componentes.
 
-\subsubsection{Desglose}
+Dentro de la arquitectura incluimos la categorización de los componentes de la solución en términos
+de subsistemas, cómo interaccionan entre si, la definición de estructuras de datos y los aspectos
+de nuestro sistema que exponemos a continuación.\footnote{Partimos de la enumeración que da
+\cite[Architecture Prerequisite]{CodeComplete2}.}
 
-\subsubsection{Validación de premisas}
+\begin{enumerate}
+    \item \textbf{Plataforma(s) en que se ejecutarán}. Partición software según software/hardware
+          subyacente.
+    \item \textbf{Acceso y uso de recursos} como son memoria, hilos de ejecución, etc.
+    \item \textbf{Seguridad}. Privilegios de acceso a la información, tratamiento de búferes
+          y datos externos, etc.\footnote{
+            Definimos un ataque informático como una vulneración de las políticas de
+            interacción con sistema. Si no existen estas reglas nunca podrá haber un
+            ataque informático porque no está definido lo que es uno.
+          }
+        \item \textbf{Protección de la propiedad intelectual}. 
+    \item \textbf{Interoperabilidad}\footnote{Según el \texttt{BOE-A-2010-1331}, \textit{``la interoperabilidad
+          es la capacidad de los sistemas de información y de los procedimientos a los que éstos dan soporte,
+          de compartir datos y posibilitar el intercambio de información y conocimiento entre ellos''}.}. ¿Cómo compartirá nuestro software sus recursos con otros
+          software y hardware?
+    \item \textbf{Localización}. ¿El software tendrá capacidad de soportar distintos
+          idiomas, formatos de fecha, puntuación, etc? Si es así, ¿qué módulos software y qué
+          tipos de datos utilizamos para conseguirlo?
+    \item \textbf{Entradas y salidas}. Componentes externos que interactúan con el programa y viceversa.
+    \item \textbf{Procesamiento de errores}. ¿Cómo manejamos los errores que podamos encontrar en 
+          la ejecución del programa?
+        \begin{itemize}
+            \item ¿Los errores los detectaremos o además los intentaremos corregir?
+            \item ¿La detección de errores será de forma anticipada o esperaremos a ejecutar
+                  los datos defectuosos para detectar?
+            \item Una vez detectado el error, ¿cómo propagará el error el programa? ¿Qué ocurrirá
+                  con el flujo de ejecución?
+            \item ¿Cómo presentamos los errores al usuario?
+            \item ¿Registramos los errores? Si es así, ¿cómo?
+            \item Ante errores críticos, ¿utilizaremos el manejador de excepciones por defecto?
+        \end{itemize}
+\end{enumerate}
+
+Probablemente, a raíz de la reflexión sobre las cuestiones arquitectónicas, descubriremos
+requisitos que no consideramos en un principio. Y al igual que los requisitos restringirán la arquitectura, la arquitectura
+restringirá a los requisitos.
+
+Justificamos cada una de las decisiones que tomemos después de haber reflexionado sobre las
+distintas alternativas. 
 
 % A veces desconocemos si una solución va a ser efectiva
 % A veces podemos probar las premisas de una solución de una forma
 % menos costosa que desarrollar la solución
 % Premisas OK no implican buena solución. Premisas malas implican mala solución.
 % Tener en cuenta que tenemos que identificar las premisas correctamente.
-
-%\subsubsection{¿Qué más?}
 
 \section{Implementación: desarrollo software}
 
