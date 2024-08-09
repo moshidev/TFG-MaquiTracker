@@ -611,7 +611,7 @@ código con más recovecos de los necesarios.
     \caption{\textit{Comparación entre el diseño del juego de
     los bolos a partir de implementación orientada a objetos
     y a partir de pruebas unitarias como se expone en \cite{TDD}.
-    Diapositiva extraida de \cite{BowlingKata}.}}
+    Diapositiva extraída de \cite{BowlingKata}.}}
 \end{figure}
 
 \subsubsection{¿Cuándo tiene sentido aplicar \textit{TDD}?}
@@ -710,7 +710,7 @@ El 29 de agosto del 2023 escribo el siguiente hilo de mensajes en SWAD.
 \section{Estimación de costes}
 
 La estimación de costes en los proyectos informáticos suelen
-ser significativamente erroneos. Nosotros nos apoyamos en dos
+ser significativamente erróneos. Nosotros nos apoyamos en dos
 recursos que han probado ser veraces para nuestras estimaciones.
 
 \begin{enumerate}
@@ -732,14 +732,58 @@ ganaría más? ¿si no lo hago, perdería?) y los costes de soporte del proyecto
 
 \section{Seguimiento del desarrollo por parte del cliente}
 
-% Por qué
-% Commits en git
-% Plan de Desarrollo
-% Changelog
+Gracias a que el cliente puede conocer en cualquier momento a qué 
+parte del proyecto nos estamos dedicando puede darse cuenta,
+gracias a la información que posee, de que estemos dedicando tiempo
+o esfuerzo a un aspecto del proyecto que él no considere tan
+relevante. También puede planificar apartar una máquina para poder
+testar un hito en el desarrollo del proyecto en la máquina objetivo.
+
+Usamos un documento que nos sirve de guía en nuestro trabajo, y que
+vamos actualizando según vamos implementando características.
+Compartimos este documento con el cliente periódicamente.
+Llamamos a este documento \textbf{Plan de desarrollo}.
+
+Cada vez que liberamos una versión compartimos otro documento llamado
+\textit{\textbf{Changelog}}\footnote{Histórico de cambios.}. Escribimos
+este documento a partir de las descripciones de las contribuciones al
+repositorio.
 
 \section{Seguimiento del coste y tiempo dedicado al proyecto}
 
-% Por qué
+Para poder facturar por nuestros servicios, y para realizar estimaciones
+basadas en datos, registramos los gastos asociados al proyecto.
 
-% Excel de horas dedicadas
-% Excel de costes asociados al proyecto
+Cuando compramos algo registramos su fecha de compra, precio y función.
+
+Cuando trabajamos:
+\begin{enumerate}
+    \item Categorizamos nuestro trabajo. ¿Estamos organizando la producción?
+          ¿Programando? ¿Haciendo un desglose de componentes? ¿Dando soporte
+          telefónico? etc.
+    \item Registramos la fecha en que lo hacemos. Registramos la hora de inicio
+          y la hora de fin.
+    \item Registramos un comentario claro y conciso acerca de qué hemos hecho.
+\end{enumerate}
+
+\subsection{¿Por qué facturar por horas y no por servicio?}
+
+Dentro de mi precio por hora están incluidos otros gastos muy relevantes como son:
+
+\begin{enumerate}
+    \item Cuota de la Seguridad Social.
+    \item Retenciones del Impuesto sobre la Renta de las Personas Físicas.
+    \item Coste amortizado de equipamiento para llevar a cabo la actividad.
+    \item Dietas.
+\end{enumerate}
+
+Yo, como trabajador autónomo, ofrezco servicios a mi empresa a precio de mercado\footnote{%
+    ¿Cuánto gana de media \textbf{después de impuestos} un empleado que realizase mis mismas
+    funciones, tuviese la misma disponibilidad, las mismas responsabilidades, con mis años
+    de experiencia, con mis conocimientos y en mi sector?
+}
+sumándole a mayores estos gastos.
+
+Es la empresa la que cobra a mi cliente por servicio.
+
+En caso de acabar el año con superávit reinvertimos en la empresa.

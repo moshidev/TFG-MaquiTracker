@@ -79,3 +79,5 @@ Desplegabilidad
 SWAD
 OOP
 Stroganoff
+unitariamente
+Changelog
