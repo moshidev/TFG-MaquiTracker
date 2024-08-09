@@ -594,22 +594,44 @@ velocidad y la estabilidad en el desarrollo}.
 
 \subsection{\textit{Test Driven Development}}
 
-% Qué es
-
-\subsubsection{¿Por qué?}
+Método divulgado por Kent Beck \cite{TDD} para modelar sistemas.
+Pide trabajar en pequeños pasos exigiendo en cada uno de ellos
+la solución más simple y adecuada posible.
 
 \subsubsection{¿Por qué no modelar los datos con anterioridad?}
-% Por qué (simplificación del diseño, requerimientos como código)
 
-% Por qué no DDD
+Imaginemos que tenemos que implementar las reglas de los bolos.
+Si modelamos el problema en términos de clases es fácil acabar 
+creando abstracciones antes de tiempo, clases innecesarias,
+código con más recovecos de los necesarios.
 
-\subsubsection{¿Cuándo tiene sentido aplicar TDD?}
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{bowling-kata.png}
+    \caption{\textit{Comparación entre el diseño del juego de
+    los bolos a partir de implementación orientada a objetos
+    y a partir de pruebas unitarias como se expone en \cite{TDD}.
+    Diapositiva extraida de \cite{BowlingKata}.}}
+\end{figure}
 
-% Cuándo utilizarlo y cuándo no (código demasiado desacoplado, puede aumentar
-% complejidad en casos en los que no es necesario testar comportamiento, nivel
-% de rigurosidad)
+\subsubsection{¿Cuándo tiene sentido aplicar \textit{TDD}?}
 
-\subsubsection{Cómo llego a la conclusión de utilizar TDD como piedra angular para mis proyectos}
+Aunque muchas de las ideas del método \textit{TDD} son relevantes
+y útiles a la hora de desarrollar cualquier pieza de software hay casos
+en los que seguir el método es contraproducente.
+
+Aunque las ideas del método son útiles y aplicables en otros ámbitos
+tiene poco o ningún sentido aplicarlo rigurosamente en otros ámbitos o
+en otros niveles; No deja de ser un método para modelar sistemas en
+términos de módulos comprobados unitariamente.
+
+\cite{TDD} expone la siguiente idea.
+De poco sirve hacer un test que duplique la lógica que implementamos. Las
+pruebas que debemos desarrollar a la hora de seguir el método tienen que
+\textit{declarar} el funcionamiento, y hacerlo de una forma que permita que
+este sea comprobable. De alguna forma, no se suele divulgar.
+
+\subsubsection{\textit{TDD} como herramienta de modelado}
 
 El 29 de agosto del 2023 escribo el siguiente hilo de mensajes en SWAD.
 
@@ -684,9 +706,6 @@ El 29 de agosto del 2023 escribo el siguiente hilo de mensajes en SWAD.
     \url{https://web.mit.edu/~simsong/www/ugh.pdf}%
 }''
 \end{quote}
-
-
-\subsection{Entregas incrementales, no iterativas}
 
 \section{Planificación del desarrollo}
 
