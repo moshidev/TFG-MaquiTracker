@@ -81,3 +81,7 @@ OOP
 Stroganoff
 unitariamente
 Changelog
+SPI
+NPNF
+JNERE
+SOIC

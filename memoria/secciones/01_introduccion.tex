@@ -1,7 +1,7 @@
 \chapter{Introducción}
 
 Este Trabajo de Fin de Grado consiste en construir una solución software
-capaz de registrar, exportar y visualizar información sobre la recolección de cultivos
+capaz de exportar y visualizar información sobre la recolección de cultivos
 leñosos haciendo uso de un sistema de control embebido.
 
 Este proyecto es software libre, y está liberado con
@@ -91,6 +91,60 @@ como el de grandes fincas profesionalizadas.
 \textbf{Nuestro cliente acude a nosotros para desarrollar una solución propia de
 estadísticas de recolección en cultivos leñosos.}
 
+\section{Problema a resolver}
+
+\textbf{Buscamos describir de una forma clara y concisa el problema y sus
+circunstancias}. Consideramos que el problema se describe de forma clara y
+concisa cuando se enuncia con el mínimo nivel de complejidad posible%
+%
+\footnote{Aunque
+no por ello debe ser insuficiente. Un mito extendido acerca de las metodologías ágiles
+es que no necesitamos tener una idea clara del problema antes de empezar a desarrollar
+una solución. Nada mas lejos de la verdad, lo que se busca con los métodos ágiles en la
+fase de análisis es poner a prueba empíricamente que nuestro modelo del problema es fiel
+a la realidad, y que el problema que estamos resolviendo es el correcto antes de proponer
+una solución arquitectónica. Así se concibe en las publicaciones que iniciaron el hoy
+degenerado movimiento. \cite{AgileBackToBasics}
+}%
+, el lenguaje que se utiliza es simple pero adecuado
+en su contexto y no tiene sesgos hacia ninguna solución.
+
+Existen empresas y trabajadores los cuales, a cambio de dinero, trabajan la
+tierra de un tercero con su maquinaria.
+
+\textbf{Quien contrata el servicio} quiere reportes/resúmenes acerca de la actividad
+de la máquina dado un intervalo de tiempo. Quiere conocer, a partir de una fecha y hora de inicio y otra de final:
+
+\begin{enumerate}[noitemsep,nolistsep]
+   \item Tiempo medio y mediano entre vibraciones.
+   \item Tiempo medio y mediano vibrando.
+   \item Posición de los árboles vibrados.
+   \item Tiempo de trabajo efectivo.
+\end{enumerate}
+
+\textbf{Tanto quien contrata el servicio como quien lo ejecuta} quieren tener una seguridad alta
+en que los reportes/resúmenes son verdaderos y que no han sido modificados. Quieren poder consultar
+los datos sin necesidad de conexión a Internet. Quieren poder comprobar la veracidad de los datos.
+
+\textbf{El software tiene que poder ejecutarse en una plataforma \textit{hardware} ya distribuida en el mercado.}
+Esto es así por motivos económicos y de soporte a clientes anteriores a esta actualización \textit{software}.
+La maquinaria se controla mediante un sistema de control dedicado con las siguientes características:
+
+\begin{itemize}[noitemsep,nolistsep]
+   \item Microcontrolador Renesas RA6M1.
+   \begin{itemize}[noitemsep,nolistsep]
+      \item Arm® Cortex®-M4.
+      \item 8kiB Data FLASH.
+      \item 128kiB SRAM.
+      \item USB2.0 FS.
+   \end{itemize}
+   \item Conexión mediante UART a un módulo HMI propietario.
+   \item Conexión mediante SPI a FRAM Fujitsu \texttt{MB85RS16NPNF-G-JNERE1} de 4kiB.
+   \item Posibilidad de conexión mediante SPI a un segundo módulo SOIC-8 que utilice la misma huella que la PCB.
+   \item Módulo GNSS UBLOX CAM-M8Q.
+   \item CAN 2.0.
+\end{itemize}
+
 \section{Objetivo}
 
 Con este proyecto \textbf{queremos obtener un producto que genere informes
@@ -98,9 +152,9 @@ de trabajo de un paraguas vibrador}, de forma que permita tanto a
 quien recolecta el fruto como al jefe de explotación tener información
 acerca de una jornada de trabajo para certificar el trabajo realizado.
 
-Concretamente, según veremos en el capítulo dedicado al análisis del problema,
+Concretamente, según vemos en la sección del problema a resolver,
 buscamos \textbf{desarrollar
-una solución software que permita registrar, exportar y visualizar
+una solución software que permita registrar y visualizar
 información sobre la recolección de cultivos
 leñosos con paraguas vibradores según los criterios de nuestro cliente},
 con la restricción de que el registro y el exportado pueda ejecutarse en
@@ -114,10 +168,10 @@ Cada una de las secciones expuestas representa una etapa del desarrollo.
 Si se corrigen, lo indicamos.
 
 \begin{enumerate}
-    \item \textbf{Introducción.} Donde exponemos el problema a resolver de forma general,
+    \item \textbf{Introducción.} Donde exponemos el problema a resolver,
     sus circunstancias actuales y los objetivos que se quieren alcanzar en rasgos generales.
 
-    \item \textbf{Planificación.} Donde exponemos cómo abordamos el desarrollo del problema y su solución.
+    \item \textbf{Metodología.} Donde exponemos cómo abordamos el desarrollo del problema y su solución y por qué.
     Explicamos qué metodología seguimos, cómo estimamos el tiempo y los costes, cómo seguimos el progreso
     del proyecto y cómo registramos métricas para los objetivos del sexto capítulo de esta memoria.
 
@@ -130,12 +184,11 @@ Si se corrigen, lo indicamos.
 
     \item \textbf{Implementación.} Donde describimos cómo llevamos a cabo el desarrollo software
     de la solución propuesta.
-    \begin{itemize}
+    \begin{itemize}[noitemsep,nolistsep]
+        \item Estimación de tiempo y costes.
         \item Escucha y registro de eventos.
         \item Almacenamiento en memoria persistente.
-        \item Extracción de datos.
-        \item Firma de los datos.
-        \item Transmisión de los datos.
+        \item Recuperación de memora persistente.
         \item Visualización de los datos.
     \end{itemize}
 
