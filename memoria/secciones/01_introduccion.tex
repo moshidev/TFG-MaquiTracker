@@ -91,7 +91,7 @@ como el de grandes fincas profesionalizadas.
 \textbf{Nuestro cliente acude a nosotros para desarrollar una solución propia de
 estadísticas de recolección en cultivos leñosos.}
 
-\section{Problema a resolver}
+\section{Problema a resolver} \label{sec:problema_a_resolver}
 
 \textbf{Buscamos describir de una forma clara y concisa el problema y sus
 circunstancias}. Consideramos que el problema se describe de forma clara y
@@ -116,8 +116,8 @@ tierra de un tercero con su maquinaria.
 de la máquina dado un intervalo de tiempo. Quiere conocer, a partir de una fecha y hora de inicio y otra de final:
 
 \begin{enumerate}[noitemsep,nolistsep]
-   \item Tiempo medio y mediano entre vibraciones.
-   \item Tiempo medio y mediano vibrando.
+   \item Tiempo medio entre vibraciones.
+   \item Tiempo medio vibrando.
    \item Posición de los árboles vibrados.
    \item Tiempo de trabajo efectivo.
 \end{enumerate}
@@ -125,25 +125,6 @@ de la máquina dado un intervalo de tiempo. Quiere conocer, a partir de una fech
 \textbf{Tanto quien contrata el servicio como quien lo ejecuta} quieren tener una seguridad alta
 en que los reportes/resúmenes son verdaderos y que no han sido modificados. Quieren poder consultar
 los datos sin necesidad de conexión a Internet. Quieren poder comprobar la veracidad de los datos.
-
-\textbf{El software tiene que poder ejecutarse en una plataforma \textit{hardware} ya distribuida en el mercado.}
-Esto es así por motivos económicos y de soporte a clientes anteriores a esta actualización \textit{software}.
-La maquinaria se controla mediante un sistema de control dedicado con las siguientes características:
-
-\begin{itemize}[noitemsep,nolistsep]
-   \item Microcontrolador Renesas RA6M1.
-   \begin{itemize}[noitemsep,nolistsep]
-      \item Arm® Cortex®-M4.
-      \item 8kiB Data FLASH.
-      \item 128kiB SRAM.
-      \item USB2.0 FS.
-   \end{itemize}
-   \item Conexión mediante UART a un módulo HMI propietario.
-   \item Conexión mediante SPI a FRAM Fujitsu \texttt{MB85RS16NPNF-G-JNERE1} de 4kiB.
-   \item Posibilidad de conexión mediante SPI a un segundo módulo SOIC-8 que utilice la misma huella que la PCB.
-   \item Módulo GNSS UBLOX CAM-M8Q.
-   \item CAN 2.0.
-\end{itemize}
 
 \section{Objetivo}
 

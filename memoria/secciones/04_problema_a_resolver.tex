@@ -1,5 +1,176 @@
-\chapter{Problema a resolver}
+\chapter{Análisis de requisitos}
 
-\section{Análisis del problema}
+\textbf{Buscamos definir qué forma tendría una solución al
+\hyperref[sec:problema_a_resolver]{problema a resolver}}.
+Ideamos y negociamos junto al cliente el producto a entregar.
+A partir de esta definición de producto obtenemos los requisitos
+de la solución.
 
-\section{Productos}
+\section{Definición del producto a entregar}
+
+Acordamos con el cliente idear un producto teniendo como referencia la
+\hyperref[sec:HU01]{HU01: Recuperación de histórico}%
+\footnote{%
+    % Explica lo que es una historia de usuario
+}%
+, ya que
+no define una solución en concreta pero describe cómo interactuará
+el cliente con el producto, qué espera obtener y cuál es su motivación.
+
+\subsection{HU01: Recuperación de histórico} \label{sec:HU01}
+
+{ \itshape Como operario quiero, dada una fecha pasada, poder consultar
+en qué ubicación trabajé, durante cuánto tiempo, cuántos
+árboles vibré y cuál fue el tiempo medio entre
+vibraciones y vibrando, para poder demostrar ante un tercero
+que he realizado un trabajo. }
+
+\subsection{Plataforma hardware}
+
+Nuestro cliente estima que esta característica únicamente debe implementarse
+en su producto de gama más alta, los controles electrónicos con pantalla.
+Los controles electrónicos con pantalla están compuestos por tres sistemas.
+
+\begin{itemize}[noitemsep,nolistsep]
+    \item \textbf{HMI}. Módulo que por medio de una interfaz gráfica muestra al usuario
+          métricas acerca de la máquina. Se comunica con el control mediante un puerto
+          serie asíncrono.
+    \item \label{sec:joystick_con_control} \textbf{MF2424 (Joystick con control)}. Módulo de potencia que decide qué acción realizar
+          según las lecturas de un joystick. Controla el sistema hidráulico del
+          paraguas vibrador.
+        \begin{itemize}[noitemsep,nolistsep]
+            \item Microcontrolador Renesas RA6M1.
+            \begin{itemize}[noitemsep,nolistsep]
+                \item Arm® Cortex®-M4.
+                \item 8kiB Data FLASH.
+                \item 128kiB SRAM.
+                \item USB2.0 FS.
+            \end{itemize}
+            \item Conexión mediante UART a un módulo HMI propietario.
+            \item Conexión mediante SPI a FRAM Fujitsu \texttt{MB85RS16NPNF-G-JNERE1} de 4kiB.
+            \item Posibilidad de conexión mediante SPI a un segundo módulo SOIC-8 que utilice la misma huella que la PCB.
+            \item CAN 2.0.
+        \end{itemize}
+    \item \textbf{MFSV (GNSS con lectura de sensores)}. Módulo que difunde en un bus CAN la
+          lectura de sensores 4-20mA, frecuencia de pulsos de entrada,
+          geolocalización y fecha y hora UTC.
+\end{itemize}
+
+El único sistema que podría permitir almacenar grandes cantidades de datos es la MF2424.
+
+\subsection{¿Qué datos almacenar?}
+
+Almacenar los datos en bruto nos permitiría poder realizar análisis sobre estos en un futuro.
+Sin embargo, dada la incertidumbre del cliente acerca de la utilidad que tendría tener estos
+datos y dado que quiere abaratar costes de desarrollo ya que no es una característica
+que haya sido muy demandada, consideramos suficiente almacenar por cada día de trabajo el
+resultado de las estadísticas que se piden en la \hyperref[sec:HU01]{HU01}.
+
+\subsection{¿Cómo recuperamos los datos?}
+
+Nuestro cliente propone desarrollar una aplicación móvil donde recuperar y consultar los datos
+del Joystick con control. Aunque tendríamos más capacidad de mostrar información acerca de los
+datos opinamos que sería una solución muy compleja para un problema tan simple.
+Después de considerar los costes asociados al desarrollo, publicación
+y mantenimiento de la aplicación, el encarecimiento que tendría el Joystick con control
+al tener que desarrollarle una solución de comunicación inalámbrica y todos los pasos que
+debería seguir el operario para recuperar la información, el cliente marca la solución como inviable.
+
+Nosotros proponemos extraer los datos por medio de una memoria USB. Aunque potencialmente la solución
+podría ser más económica y el proceso para el operario más simple esta solución tendría otros
+desafíos, como es el poder asegurar la validez de los datos, el cambio del diseño de la caja y de
+la MF2424 para soportar escribir datos sobre una memoria USB.
+
+Por último, pensamos en mostrar la información por medio de nuestro HMI. Nuestro HMI tiene limitaciones
+acerca de cuántos datos puede mostrar y de cómo se muestran los datos pero permitiría desarrollar una
+interfaz gráfica suficiente para el propósito. Esta solución es la más económica
+y el procedimiento para recuperar los datos es muy simple. Nos decantamos por esta opción.
+
+\begin{figure}[!b]
+    \centering
+    \includegraphics[width=\textwidth]{montaje_joystick_con_control.jpg}
+    \caption{\textit{Sistema \hyperref[sec:joystick_con_control]{Joystick con control.}} \textit{Tenemos de
+    izquierda a derecha la tarjeta MF2424, un Joystick digital y una tarjeta adaptadora.}
+    \textit{La placa MultiFunción2424 alimenta las electroválvulas del
+    sistema hidráulico según la secuencia de estados del Joystick por medio de reglas Software.}}
+\end{figure}
+
+\subsection{¿Cuánto almacenamiento necesitaremos para almacenar los datos?}
+
+Desglosamos los datos que queremos almacenar de forma persistente y sumamos los bytes que sumarían.
+
+\begin{itemize}[noitemsep,nolistsep]
+    \item \textbf{El año, el mes y el día} puede almacenarse como el tipo \texttt{time\_t}, que en nuestra
+        plataforma son los segundos desde el epoch.
+        Mediante la función \texttt{gmtime\_r} y \texttt{mktime} podemos traducir de
+        segundos a fecha y viceversa. Si utilizamos un tipo de 32 bits sin signo el sistema funcionaría
+        correctamente hasta el año 2106 aproximadamente. Si utilizamos uno de 64 bits no tendríamos fecha
+        de expiración.
+    \item \textbf{La latitud o la longitud} pueden almacenarse como el tipo \texttt{float}%
+    \footnote{Asumimos que el software se ejecutará en una plataforma que implementa el tipo como
+    un número en coma flotante tal y como define el IEEE-754, como es nuestro caso con el RA6M1 \cite{renesas:RA6M1}.}%
+    . Es suficiente al tener una precisión superior a los 10m.
+    \item \textbf{El número de árboles vibrados} puede almacenarse como el tipo \texttt{uint16\_t}. Es
+        suficiente al ser el número de valores significativamente mayor al que se puede trabajar en un
+        día, que son 400 árboles aproximadamente.
+    \item \textbf{Los tiempos} pueden almacenarse como el tipo \texttt{uint16\_t}. Suponiendo que almacenamos
+        los segundos, es suficiente al poder almacenar más de los segundos que tiene un día.
+\end{itemize}
+
+En total ocuparíamos 32 bytes, de los cuales 10 irían destinados a \textit{padding}.
+\hyperref[table:almacenamiento]{En esta tabla} describimos la disposición que tendrían un registro
+de los datos en almacenamiento persistente.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|}
+        \hline
+        Fecha                        & uint64\_t \\ \hline
+        Latitud                      & float \\ \hline
+        Longitud                     & float \\ \hline
+        Número de árboles vibrados   & uint16\_t \\ \hline
+        Tiempo medio de vibración    & uint16\_t \\ \hline
+        Tiempo medio entre árboles   & uint16\_t \\ \hline
+        \textit{Padding}             & uint16\_t \\ \hline
+        \textit{Padding}             & uint32\_t \\ \hline
+        \textit{Padding}             & uint32\_t \\ \hline
+    \end{tabular}
+    \caption{Estructura para el registro de estadísticas propuesto para un día de trabajo.
+    Añadimos \textit{padding} hasta llegar a los 32 bytes, de forma que aseguramos que los
+    registros queden alineados. Esto también permite que en un futuro
+    podamos meter hasta 10 bytes más de información por registro.}
+    \label{table:almacenamiento}
+\end{table}
+
+\subsection{¿Cuánta memoria necesitaremos para almacenar un día de trabajo?}
+
+Tanto la fecha como el número de árboles es inmediato. Son sus correspondientes tipos.
+
+Para calcular las medias existen algoritmos estables numéricamente, de forma que como mucho
+tendríamos que conocer el valor de la media anterior y el número de vibraciones o el número
+de árboles, según corresponda.
+
+\subsection{¿Qué dispositivos de almacenamiento utilizaríamos para el almacenamiento de los datos?}
+
+Podemos utilizar cualquier tecnología que comparta la disposición de patillas con el módulo \linebreak \texttt{MB85RS16NPNF-G-JNERE1},
+ya sea SOIC-8 o SOP-8. Consideramos módulos FRAM y FLASH.
+
+Ambas tecnologías tienen sus propias ventajas. La tecnología FLASH permite mayor densidad de información,
+aunque la escritura en los bloques tiene una vida limitada. La tecnología FRAM es más cara, pero permite
+escribir y leer direcciones arbitrarias y el número de escrituras y lecturas es más que suficiente para la vida
+útil de un producto.
+
+Aunque un módulo FLASH compatible como puede ser el Infineon Technologies \linebreak \texttt{S25FL128LAGMFB013} tiene un
+precio para 10 unidades de 2,59€/u. y un módulo FRAM de 512kiB tiene un precio para 10 unidades de
+8,17€/u., en principio nuestro cliente no espera vender esta tecnología a más de 20 equipos este primer año.
+Desconocemos la tecnología, y desarrollar un controlador (o adaptar el que nos ofrece Infineon) para esta tecnología
+encarecería el desarrollo, tanto en tiempo como en coste, comparado con el controlador de las FRAM que ponemos como ejemplo.
+
+Consideramos como suficiente la memoria FRAM Fujitsu Semiconductor \linebreak \texttt{MB85RS4MTYPF-G-BCERE1} de 512kiB,
+que permite almacenar registros para más de los 5 años que nos pide el cliente.
+
+\section{Síntesis}
+
+% RF01 ...
+% RF02 ...
+% RNF01 ...

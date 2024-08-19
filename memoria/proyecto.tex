@@ -18,7 +18,6 @@
 \usepackage{cite} %para incluir citas del archivo <nombre>.bib
 \usepackage{enumerate}
 \usepackage{enumitem}
-\usepackage{hyperref}
 \usepackage{graphicx}
 \graphicspath{{imágenes/}}
 \usepackage{tabularx}
@@ -26,6 +25,11 @@
 % Permite hacer citacion de bloque
 \usepackage{setspace}
 \usepackage{etoolbox}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,	% false: boxed links; true: colored links
+	allcolors=blue,
+}
 
 \newcommand{\titulo}{MaquiTracker}
 \newcommand{\subtitulo}{Servicio de localización, estadística y mantenimiento preventivo para maquinaria agrícola.}
@@ -36,11 +40,6 @@
 \newcommand{\departamento}{Departamento de Ingeniería de Computadores, Automática y Robótica}
 
 \usepackage[table,xcdraw]{xcolor}
-\hypersetup{
-	colorlinks=true,	% false: boxed links; true: colored links
-	linkcolor=black,	% color of internal links
-	urlcolor=cyan		% color of external links
-}
 
 % Configuración tipografía
 \renewcommand{\familydefault}{\sfdefault}

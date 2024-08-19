@@ -85,3 +85,16 @@ SPI
 NPNF
 JNERE
 SOIC
+allcolors
+HU
+MF
+MFSV
+geolocalización
+MultiFunción
+gmtime
+mktime
+uint
+Infineon
+LAGMFB
+MTYPF
+BCERE
