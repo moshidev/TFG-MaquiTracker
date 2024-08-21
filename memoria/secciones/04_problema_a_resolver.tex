@@ -6,7 +6,7 @@ Ideamos y negociamos junto al cliente el producto a entregar.
 A partir de esta definición de producto obtenemos los requisitos
 de la solución.
 
-\section{Definición del producto a entregar}
+\section{Análisis del problema}
 
 Acordamos con el cliente idear un producto teniendo como referencia la
 \hyperref[sec:HU01]{HU01: Recuperación de histórico}%
@@ -113,9 +113,26 @@ Desglosamos los datos que queremos almacenar de forma persistente y sumamos los 
     \item \textbf{El número de árboles vibrados} puede almacenarse como el tipo \texttt{uint16\_t}. Es
         suficiente al ser el número de valores significativamente mayor al que se puede trabajar en un
         día, que son 400 árboles aproximadamente.
-    \item \textbf{Los tiempos} pueden almacenarse como el tipo \texttt{uint16\_t}. Suponiendo que almacenamos
-        los segundos, es suficiente al poder almacenar más de los segundos que tiene un día.
+    \item \textbf{El tiempo de vibración} puede almacenarse como el tipo \texttt{uint16\_t}. La vibración nunca
+        es superior a 20 segundos y queremos hacer medias con precisión de la centésima del segundo. Por lo que
+        podríamos almacenar medias de hasta 6553.5s, que no se darán.
+    \item \textbf{El tiempo entre árboles} pueden almacenarse como el tipo \texttt{uint16\_t}. El tiempo
+        entre árboles requiere una media con precisión de la centésima, y el tiempo máximo para que contabilice
+        si seguimos trabajando es de 10 minutos, menos de los 109 minutos que tendríamos con el valor máximo
+        de 6553.5s que podríamos almacenar.
 \end{itemize}
+
+El paso del tiempo es monótonamente creciente, por lo que podemos almacenar los
+datos consecutivos en memoria desde la fecha del registro más antiguo al registro
+más nuevo.
+
+Gracias al almacenamiento ordenado y el hecho de que el acceso a la FRAM no ofrece
+penalizaciones por localidad de la memoria%
+\footnote{Aunque sí que cada consulta tiene una pequeña de sobrecarga en tanto
+que tenemos que indicar la operación a realizar y una dirección de memoria.}
+podríamos recuperar cualquier registro en tiempo $c \cdot log_{2} n$, con $c$
+el tiempo que tardamos en recuperar la fecha del registro y $n$ el número de
+registros almacenados en memoria.
 
 En total ocuparíamos 32 bytes, de los cuales 10 irían destinados a \textit{padding}.
 \hyperref[table:almacenamiento]{En esta tabla} describimos la disposición que tendrían un registro
@@ -123,17 +140,17 @@ de los datos en almacenamiento persistente.
 
 \begin{table}[H]
     \centering
-    \begin{tabular}{|l|l|}
+    \begin{tabular}{|l|l|l|}
         \hline
-        Fecha                        & uint64\_t \\ \hline
-        Latitud                      & float \\ \hline
-        Longitud                     & float \\ \hline
-        Número de árboles vibrados   & uint16\_t \\ \hline
-        Tiempo medio de vibración    & uint16\_t \\ \hline
-        Tiempo medio entre árboles   & uint16\_t \\ \hline
-        \textit{Padding}             & uint16\_t \\ \hline
-        \textit{Padding}             & uint32\_t \\ \hline
-        \textit{Padding}             & uint32\_t \\ \hline
+        Fecha                        & uint64\_t & Segundos desde el \textit{epoch} \\ \hline
+        Latitud                      & float & Coordenadas decimales \\ \hline
+        Longitud                     & float & Coordenadas decimales \\ \hline
+        Número de árboles vibrados   & uint16\_t & Árboles \\ \hline
+        Tiempo medio de vibración    & uint16\_t & Centésimas de segundo \\ \hline
+        Tiempo medio entre árboles   & uint16\_t & Segundos \\ \hline
+        \textit{Padding}             & uint16\_t &  \\ \hline
+        \textit{Padding}             & uint32\_t &  \\ \hline
+        \textit{Padding}             & uint32\_t &  \\ \hline
     \end{tabular}
     \caption{Estructura para el registro de estadísticas propuesto para un día de trabajo.
     Añadimos \textit{padding} hasta llegar a los 32 bytes, de forma que aseguramos que los
@@ -169,8 +186,98 @@ encarecería el desarrollo, tanto en tiempo como en coste, comparado con el cont
 Consideramos como suficiente la memoria FRAM Fujitsu Semiconductor \linebreak \texttt{MB85RS4MTYPF-G-BCERE1} de 512kiB,
 que permite almacenar registros para más de los 5 años que nos pide el cliente.
 
-\section{Síntesis}
+\section{Definición del comportamiento del sistema}
 
-% RF01 ...
-% RF02 ...
-% RNF01 ...
+\subsection{Reacción del sistema a partir de los eventos del control}
+
+\subsubsection{RNF01: Límite de tiempo procesando eventos}
+
+Cualquier llamada bloqueante al sistema no tarda más de 25ms
+en terminar su proceso para asegurar el correcto funcionamiento del
+resto de módulos que componen la solución del control.
+
+\subsubsection{RF01: Detección del evento \textit{vibrar árbol}}
+
+El sistema declara y define una función pública a invocar
+de forma recurrente que tiene como parámetros los datos que definen
+a un evento.
+
+Un evento debe tener la información suficiente para deducir
+las estadísticas solicitadas en el HMI (RF03).
+
+El sistema identifica cada vez que hemos vibrado un árbol.
+
+Hemos vibrado un árbol en el momento en que abrimos pinza en
+la secuencia de movimientos \textit{cerrar pinza, vibrar y abrir pinza}.
+Entre medias de esta secuencia, o durante, pueden ocurrir otros
+movimientos.
+
+Ante el evento de vibrar un árbol el sistema invoca a una función
+del mismo para analizar y registrar los datos del evento. (RF02)
+
+Es muy difícil que este requisito cambie puesto que se basa en el
+funcionamiento del paraguas vibrador.
+
+\subsubsection{RF02: Procesamiento del evento \textit{vibrar árbol}}
+
+El sistema al detectar el evento \textit{vibrar árbol} recupera
+el estado actual del registro del día en que nos encontramos.
+A partir de este y junto a los datos del evento decide el nuevo
+estado en que debe estar el registro, ordenándolo almacenar
+sobrescribiendo el anterior.
+
+Este requisito puede que cambiase en el caso de que los requisitos
+de la estructura de datos subyacente cambiasen (RF04) (RF05) (RF06).
+
+\subsection{Recuperación de información por parte del usuario}
+
+\subsubsection{RF03: Consulta de un registro por un usuario}
+
+Un usuario puede indicar en el HMI un año, un mes y un día.
+Si no existe un registro para este día se indica.
+Si existe muestra la fecha, la ubicación aproximada del trabajo,
+el número de árboles vibrados, el tiempo medio entre vibraciones
+y el tiempo medio entre árboles.
+
+Este requisito muy probablemente cambie si los usuarios no
+lo perciben intuitivo.
+
+\subsection{Estructura de datos para almacenar los registros}
+
+Estos requisitos sería fácil que cambiasen en el momento en que
+utilizásemos otro tipo de soporte hardware para el almacenamiento
+o acceso a la información.
+
+\subsubsection{RF04: Recuperación de un registro}
+
+El sistema recupera un registro dada una fecha de consulta.
+El sistema conoce la posición en memoria del registro con la fecha
+más antigua y el registro de la fecha más reciente (RF06).
+En caso de no existir lo indica sin perturbar el flujo de ejecución.
+Al recuperar el registro también devuelve información suficiente para
+que (RF05) pudiera escribir datos sobre el registro.
+
+La recuperación de un registro se realiza por medio de una búsqueda
+dicotómica de las fechas que almacenamos en la FRAM.
+Esta operación no modifica los datos contenidos en la FRAM.
+
+\subsubsection{RF05: Escritura de un registro}
+
+Dado un registro existente (RF04) (RF06) el sistema permite almacenar nuevos
+datos en este registro.
+
+El sistema no permite almacenar una fecha diferente a la existente.
+
+\subsubsection{RF06: Creación de un registro}
+
+Consideramos que una fecha es un año, un mes y un día.
+
+Dada una fecha más reciente que cualquiera de las fechas almacenadas
+el sistema crea un nuevo registro inicializada con esta nueva fecha
+y con los datos a cero, actualizando la posición de memoria del registro
+más antiguo y del más reciente.
+
+En caso de no cumplir la precondición no crea un registro.
+
+En caso de que no queden huecos para nuevos registros se sobrescribe
+el más antiguo utilizando una política \textit{FIFO}.

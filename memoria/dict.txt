@@ -98,3 +98,5 @@ Infineon
 LAGMFB
 MTYPF
 BCERE
+RNF
+precondición
