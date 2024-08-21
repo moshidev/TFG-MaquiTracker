@@ -186,7 +186,54 @@ encarecería el desarrollo, tanto en tiempo como en coste, comparado con el cont
 Consideramos como suficiente la memoria FRAM Fujitsu Semiconductor \linebreak \texttt{MB85RS4MTYPF-G-BCERE1} de 512kiB,
 que permite almacenar registros para más de los 5 años que nos pide el cliente.
 
+\subsection{¿Cómo interactuaría el usuario con el sistema?}
+
+Quien desarrolla la interfaz gráfica nos indica que la capacidad
+expresiva de esta es mínima. Tenemos que adaptar la capacidad
+expresiva del diseño a las capacidades del soporte software y
+hardware del vendedor de las pantallas que se eligieron para el proyecto.
+
+La comunicación entre módulos la hacemos mediante estructuras de datos.
+Según el estado de estas estructuras de datos nuestro programa y el de
+nuestro colaborador saben que hacer. Por experiencia sabemos que esta
+es la forma más efectiva para ambos para desarrollar.
+
+Negociando con el colaborador llegamos a la interfaz que describimos
+en \hyperref[fig:interfaz_grafica]{las figuras dedicadas a la interfaz
+gráfica}.
+
+\begin{figure}[!b]
+    \begin{minipage}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{pantalla_consulta_registro.png}
+        \caption{Interfaz para consultar un registro. El usuario puede
+        introducir numéricamente por medio de un teclado emergente al pulsar
+        sobre los cuadrados azules la fecha que quiere consultar. Una vez
+        introducida se muesta el texto ``SÍ'' o ``NO'' en el campo ``¿EXISTE REGISTRO?''.
+        En caso de que exista el registro, al pulsar sobre el botón ``RECUPERAR'',
+        navegamos a la pantalla ``Registro''.}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{pantalla_registro.png}
+        \caption{Interfaz para visualizar los datos de un registro. Accedemos
+        a esta pantalla a partir de la pantalla ``Consulta registro''. El día
+        se muestra como número, el mes como texto y el año como número.
+        Los árboles vibrados como entero, los tiempos como segundos con 
+        precisión de la centésima y con la unidad ``s'' y la ubicación
+        aproximada en formato DMS (\textit{\textit{Degrees, Minutes, Seconds.}}).}
+    \end{minipage}
+    \label{fig:interfaz_grafica}
+\end{figure}
+
 \section{Definición del comportamiento del sistema}
+
+Describimos en forma de requisitos funcionales y no funcionales el
+comportamiento que queremos que tenga el sistema. De esta forma, al resumir
+la información que analizamos en la sección anterior, tenemos una
+idea general acerca de este.
+
+Los requisitos definitivos se codifican en forma de tests, por lo que
+esta síntesis sólo es una ayuda inicial.
 
 \subsection{Reacción del sistema a partir de los eventos del control}
 
@@ -240,7 +287,13 @@ el número de árboles vibrados, el tiempo medio entre vibraciones
 y el tiempo medio entre árboles.
 
 Este requisito muy probablemente cambie si los usuarios no
-lo perciben intuitivo.
+lo perciben intuitivo.\footnote{
+    Para evitar realizar esfuerzo innecesario, antes de implementar,
+    realizamos un diseño y preguntamos a personas que desconocen
+    el propósito de la interfaz y cómo se interactúa con ella para
+    qué sirve y cuál es su propósito, y comprobamos que interactuarían
+    correctamente con ella. Evaluamos sus comentarios.
+}
 
 \subsection{Estructura de datos para almacenar los registros}
 
