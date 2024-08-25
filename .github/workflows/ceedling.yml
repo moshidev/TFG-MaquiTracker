@@ -1,0 +1,19 @@
+name: Ceedling CI
+
+on:
+  push:
+    branches: [ "main" ]
+    paths: [ "software/**" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: daniel00/ceedling:latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Run tests
+      run: (cd software && ceedling)

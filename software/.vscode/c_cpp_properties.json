@@ -1,0 +1,55 @@
+{
+    "configurations": [
+        {
+            "name": "test-linux",
+            "defines": [
+                "TEST"
+            ],
+            "intelliSenseMode": "linux-gcc-x64",
+            "cStandard": "c99",
+            "cppStandard": "gnu++17",
+            "includePath": [
+                "${workspaceFolder}/src/**",
+                "${workspaceFolder}/include/**",
+                "${workspaceFolder}/build/test/mocks/**",
+                "${workspaceFolder}/test/support/**",
+                "/var/lib/gems/3.0.0/gems/ceedling-0.31.1/vendor/unity/src/**"
+            ]
+        },
+        {
+            "name": "test-Windows",
+            "defines": [
+                "TEST"
+            ],
+            "intelliSenseMode": "linux-gcc-x64",
+            "compilerPath": "C:\\ProgramData\\mingw64\\mingw64\\bin\\gcc.exe",
+            "cStandard": "c99",
+            "cppStandard": "gnu++17",
+            "includePath": [
+                "${workspaceFolder}/src/**",
+                "${workspaceFolder}/include/**",
+                "${workspaceFolder}/build/test/mocks/**",
+                "${workspaceFolder}/test/support/**",
+                "C:\\Ruby27-x64\\lib\\ruby\\gems\\2.7.0\\gems\\ceedling-0.31.1\\vendor\\unity\\src"
+            ]
+        },
+        {
+            "name": "test-macOS",
+            "defines": [
+                "TEST"
+            ],
+            "intelliSenseMode": "linux-gcc-x64",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c99",
+            "cppStandard": "gnu++17",
+            "includePath": [
+                "${workspaceFolder}/src/**",
+                "${workspaceFolder}/include/**",
+                "${workspaceFolder}/build/test/mocks/**",
+                "${workspaceFolder}/test/support/**",
+                "~/.rbenv/versions/2.7.8/lib/ruby/gems/2.7.0/gems/ceedling-0.31.1/vendor/unity/src"
+            ]
+        }
+    ],
+    "version": 4
+}
