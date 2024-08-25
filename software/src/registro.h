@@ -1,5 +1,5 @@
-#ifndef REGISTROS_H
-#define REGISTROS_H
+#ifndef REGISTRO_H
+#define REGISTRO_H
 
 #include <stdint.h>
 
@@ -34,4 +34,4 @@ int registro_procesa(const registro_evt_t* evento);
 
 registro_t registro_estado(void);
 
-#endif // REGISTROS_H
+#endif // REGISTRO_H
