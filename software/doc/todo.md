@@ -26,7 +26,7 @@ header-includes:
 
 2. **Implementa comportamiento del sistema de registros (v0.2.0)**
 
-- Realiza una estimación de costes y de tiempo.
+- ~~Realiza una estimación de costes.~~ \ding{51}
 - ~~Implementa reglas de un registro.~~ \ding{51}
 - ~~Implementa driver FRAM `MB85RS4MT`.~~ \ding{51}
 - Implementa reglas de almacenamiento y recuperación de registros.
