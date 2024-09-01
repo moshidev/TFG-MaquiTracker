@@ -10,7 +10,7 @@
 			"path": "memoria"
 		},
 		{
-			"path": "software"
+			"path": "software/libHistoricoEstadisticas"
 		}
 	],
 	"settings": {}
