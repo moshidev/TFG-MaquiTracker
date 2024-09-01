@@ -1,3 +1,7 @@
+/**
+ * Daniel Pedrosa Montes © 2024
+ */
+
 #ifdef TEST
 
 #include "unity.h"

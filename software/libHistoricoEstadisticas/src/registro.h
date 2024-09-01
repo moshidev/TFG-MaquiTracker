@@ -1,3 +1,7 @@
+/**
+ * Daniel Pedrosa Montes © 2024
+ */
+
 #ifndef REGISTRO_H
 #define REGISTRO_H
 
