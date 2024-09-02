@@ -40,6 +40,9 @@ void registro_reset(void) {
 
 static bool arbol_detectado(registro_mov_t mov) {
     switch (mov) {
+    case kRegistro_Quieto:
+    case kRegistro_Moviendo:
+        break;
     case kRegistro_PinzaCerrando:
         if (ca_estado == kRegistro_PinzaAbriendo) {
             ca_estado = kRegistro_PinzaCerrando;
@@ -75,6 +78,9 @@ static uint64_t milisegundos_vibrados(registro_mov_t mov, uint64_t ms_desde_ence
 static uint64_t milisegundos_entre_arboles(registro_mov_t mov, uint64_t ms_desde_encendido) {
     uint64_t tiempo_entre_arboles = 0;
     switch (mov) {
+    case kRegistro_Quieto:
+    case kRegistro_Moviendo:
+        break;
     case kRegistro_Vibrando:
         ct_estado = kRegistro_Vibrando;
         break;
