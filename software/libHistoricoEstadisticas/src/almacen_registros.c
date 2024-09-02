@@ -26,14 +26,40 @@ static void recupera_rb(ar_t* ar) {
 
 static uint32_t obten(ar_t* ar, uint64_t fecha) {
     recupera_rb(ar);
-    for (uint32_t i = 0; i < ar->_rb.len; i++) {
-        const uint32_t addr = calc_addr(i);
+
+    // comprueba si el registro coincide con la última llamada
+    if (ar->_cache < ar->_rb.len) {
         registro_t r = {0};
+        const uint32_t addr = calc_addr(ar->_cache);
         ar->_read(addr, &r, sizeof(registro_t));
         if (r.fecha == fecha) {
             return addr;
         }
     }
+
+    // búsqueda binaria
+    uint32_t min = 0;
+    uint32_t max = ar->_rb.len;
+    while (min < max) {
+        uint32_t p = (max - min) / 2 + min;
+        const uint32_t addr = calc_addr(p);
+        registro_t r = {0};
+        ar->_read(addr, &r, sizeof(registro_t));
+        if (r.fecha < fecha) {
+            if (min == p) {
+                return UINT32_MAX;  // bajo esta condición deducimos que la fecha a consultar es anterior a cualquier otra en la estructura de datos
+            }
+            min = p;
+        }
+        else if (r.fecha > fecha) {
+            max = p;
+        }
+        else if (r.fecha == fecha) {
+            ar->_cache = addr;
+            return addr;
+        }
+    }
+
     return UINT32_MAX;
 }
 

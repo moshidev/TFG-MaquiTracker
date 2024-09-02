@@ -43,6 +43,7 @@ void setUp(void) {
             .len = 0,
             .size = N_REGISTROS,
         },
+        ._cache = UINT32_MAX,
     };
 }
 

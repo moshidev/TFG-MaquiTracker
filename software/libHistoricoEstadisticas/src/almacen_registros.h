@@ -25,6 +25,7 @@ typedef struct {
     ar_write_t _write;
     ar_read_t _read;
     ar_ring_buffer_t _rb;
+    uint32_t _cache;
 } ar_t;
 
 void ar_nuevo(ar_t* ar, uint64_t fecha);
