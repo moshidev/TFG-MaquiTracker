@@ -28,10 +28,32 @@ typedef struct {
     uint32_t _cache;
 } ar_t;
 
-void ar_nuevo(ar_t* ar, uint64_t fecha);
+typedef enum {
+    kArErr_Ok,
+    kArErr_Invalid,
+} ar_err_t;
 
+/**
+ * Devuelve:
+ *   - kArErr_Ok cuando crea un nuevo registro.
+ *   - kArErr_Invalid cuando se intenta registrar una fecha que no es
+ *     mas nueva que la última o que es igual a cero.
+ */
+ar_err_t ar_nuevo(ar_t* ar, uint64_t fecha);
+
+/**
+ * Devuelve:
+ *   - Una estructura válida cuando existe un registro para la fecha dada.
+ *   - Un registro con fecha 0 en caso contrario.
+ */
 registro_t ar_recupera(ar_t* ar, uint64_t fecha);
 
-void ar_actualiza(ar_t* ar, uint64_t fecha, const registro_t* r);
+/**
+ * Devuelve:
+ *   - kArErr_Ok cuando actualiza el registro.
+ *   - kArErr_Invalid no se ha encontrado un registro con la fecha
+ *     indicada.
+ */
+ar_err_t ar_actualiza(ar_t* ar, const registro_t* r);
 
 #endif // ALMACEN_REGISTROS_H

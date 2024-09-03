@@ -80,7 +80,7 @@ void test_actualiza_registro(void) {
         .tiempo_medio_entre_arboles_cs = 6,
         .tiempo_medio_vibrando_cs = 7,
     };
-    ar_actualiza(&ar, fecha+dia*2, &nuevo);
+    ar_actualiza(&ar, &nuevo);
 
     const registro_t obtenido = ar_recupera(&ar, fecha+dia*2);
     TEST_ASSERT_EQUAL(0, memcmp(&nuevo, &obtenido, sizeof(registro_t)));

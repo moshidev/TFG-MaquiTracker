@@ -90,9 +90,9 @@ static void nuevo(ar_t* ar, uint64_t fecha) {
     almacena_rb(ar);
 }
 
-void ar_nuevo(ar_t* ar, uint64_t fecha) {
+ar_err_t ar_nuevo(ar_t* ar, uint64_t fecha) {
     if (fecha == 0) {
-        return;
+        return kArErr_Invalid;
     }
 
     const uint32_t addr = obten_ultimo(ar);
@@ -100,11 +100,12 @@ void ar_nuevo(ar_t* ar, uint64_t fecha) {
         registro_t r = {0};
         ar->_read(addr, &r, sizeof(registro_t));
         if (fecha <= r.fecha) {
-            return;
+            return kArErr_Invalid;
         }
     }
 
     nuevo(ar, fecha);
+    return kArErr_Ok;
 }
 
 registro_t ar_recupera(ar_t* ar, uint64_t fecha) {
@@ -118,15 +119,12 @@ registro_t ar_recupera(ar_t* ar, uint64_t fecha) {
     return r;
 }
 
-void ar_actualiza(ar_t* ar, uint64_t fecha, const registro_t* r) {
-    if (fecha != r->fecha) {
-        return;
-    }
-
-    const uint32_t addr = obten(ar, fecha);
+ar_err_t ar_actualiza(ar_t* ar, const registro_t* r) {
+    const uint32_t addr = obten(ar, r->fecha);
     if (addr == UINT32_MAX) {
-        return;
+        return kArErr_Invalid;
     }
 
     ar->_write(addr, r, sizeof(registro_t));
+    return kArErr_Ok;
 }
