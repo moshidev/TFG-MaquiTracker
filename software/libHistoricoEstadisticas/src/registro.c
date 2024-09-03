@@ -42,8 +42,8 @@ void registro_init(const registro_t* r) {
     registro_reset();
     fecha = r->fecha;
     num_arboles = r->num_arboles_vibrados;
-    tiempo_vibrando = num_arboles * r->tiempo_medio_vibrando_cs*100;
-    tiempo_entre_arboles = num_arboles * r->tiempo_medio_entre_arboles_cs*100;
+    tiempo_vibrando = (uint64_t)num_arboles * r->tiempo_medio_vibrando_cs*100;
+    tiempo_entre_arboles = (uint64_t)num_arboles * r->tiempo_medio_entre_arboles_cs*100;
     latitud_dec = r->latitud_dec;
     longitud_dec = r->longitud_dec;
 }
@@ -86,7 +86,7 @@ static uint64_t milisegundos_vibrados(registro_mov_t mov, uint64_t ms_desde_ence
 }
 
 static uint64_t milisegundos_entre_arboles(registro_mov_t mov, uint64_t ms_desde_encendido) {
-    uint64_t tiempo_entre_arboles = 0;
+    uint64_t ms_entre_arboles = 0;
     switch (mov) {
     case kRegistro_Quieto:
     case kRegistro_Moviendo:
@@ -105,18 +105,18 @@ static uint64_t milisegundos_entre_arboles(registro_mov_t mov, uint64_t ms_desde
             const uint64_t t = ms_desde_encendido - ct_ultima_apertura;
             const uint64_t ms_10m = 10*60*1000;
             if (t < ms_10m) {
-                tiempo_entre_arboles = t;
+                ms_entre_arboles = t;
             }
             ct_estado = kRegistro_PinzaCerrando;
         }
         break;
     }
-    return tiempo_entre_arboles;
+    return ms_entre_arboles;
 }
 
 static float media_en_linea(float ultima_media, float nuevo_valor, uint32_t numero_muestras) {
     // https://nullbuffer.com/articles/welford_algorithm.html
-    return ultima_media + (nuevo_valor - ultima_media) / numero_muestras;
+    return ultima_media + (nuevo_valor - ultima_media) / (float)numero_muestras;
 }
 
 int registro_procesa(const registro_evt_t* evt) {
@@ -142,14 +142,14 @@ int registro_procesa(const registro_evt_t* evt) {
 
 static uint64_t calcula_tiempo_medio_vibrando_ms(void) {
     if (num_arboles) {
-        return roundf((float)tiempo_vibrando / (float)num_arboles);
+        return (uint64_t)roundf((float)tiempo_vibrando / (float)num_arboles);
     }
     return tiempo_vibrando;
 }
 
 static uint64_t calcula_tiempo_medio_entre_arboles_ms(void) {
     if (num_arboles) {
-        return roundf((float)tiempo_entre_arboles / (float)num_arboles);
+        return (uint64_t)roundf((float)tiempo_entre_arboles / (float)num_arboles);
     }
     return tiempo_entre_arboles;
 }
