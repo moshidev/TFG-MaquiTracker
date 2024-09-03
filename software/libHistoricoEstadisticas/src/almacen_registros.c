@@ -18,6 +18,8 @@ static void recupera_rb(ar_t* ar) {
     ar_ring_buffer_t rb = {0};
     ar->_read(0, &rb, sizeof(ar_ring_buffer_t));
     if (rb.addr + rb.len + rb.size != ar->_rb.cks) {
+        // en caso de inconsistencia entre memoria externa y local
+        // prevalece la local
         almacena_rb(ar);
         return;
     }
@@ -88,6 +90,19 @@ static void nuevo(ar_t* ar, uint64_t fecha) {
         ar->_rb.addr = (ar->_rb.addr + sizeof(registro_t)) % (ar->_rb.size*sizeof(registro_t));
     }
     almacena_rb(ar);
+}
+
+void ar_init(ar_t* ar) {
+    ar_ring_buffer_t rb = {0};
+    ar->_read(0, &rb, sizeof(ar_ring_buffer_t));
+    if (rb.addr + rb.len + rb.size != rb.cks || rb.size != ar->_rb.size) {
+        rb.addr = 0;
+        rb.len = 0;
+        rb.size = ar->_rb.size;
+        rb.cks = ar->_rb.cks;
+        ar->_write(0, &rb, sizeof(ar_ring_buffer_t));
+    }
+    ar->_read(0, &ar->_rb, sizeof(ar_ring_buffer_t));
 }
 
 ar_err_t ar_nuevo(ar_t* ar, uint64_t fecha) {

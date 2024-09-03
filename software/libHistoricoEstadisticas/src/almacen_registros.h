@@ -33,6 +33,8 @@ typedef enum {
     kArErr_Invalid,
 } ar_err_t;
 
+void ar_init(ar_t* ar);
+
 /**
  * Devuelve:
  *   - kArErr_Ok cuando crea un nuevo registro.

@@ -14,27 +14,24 @@
 #include <string.h>
 
 #define N_REGISTROS 3
+#define MEM_SIZE (size_t)(sizeof(ar_ring_buffer_t)+N_REGISTROS*sizeof(registro_t))
 
-static void* memoria;
-static size_t memoria_len;
+static uint8_t mem[MEM_SIZE];
 
 static void write(uint32_t addr, const void* data, uint32_t len) {
-    TEST_ASSERT(addr + len <= (uint64_t)memoria_len);
-    memcpy(memoria+addr, data, len);
+    TEST_ASSERT(addr + len <= (uint64_t)MEM_SIZE);
+    memcpy(mem+addr, data, len);
 }
 
 static void read(uint32_t addr, void* data, uint32_t len) {
-    TEST_ASSERT(addr + len <= (uint64_t)memoria_len);
-    memcpy(data, memoria+addr, len);
+    TEST_ASSERT(addr + len <= (uint64_t)MEM_SIZE);
+    memcpy(data, mem+addr, len);
 }
 
 static ar_t ar;
 
 void setUp(void) {
-    memoria_len = sizeof(ar_ring_buffer_t) + N_REGISTROS*sizeof(registro_t);
-    memoria = malloc(memoria_len);
-    TEST_ASSERT(memoria);
-    memset(memoria, UINT8_MAX, memoria_len);
+    memset(mem, UINT8_MAX, MEM_SIZE);
     ar = (ar_t){
         ._read = read,
         ._write = write,
@@ -45,11 +42,10 @@ void setUp(void) {
         },
         ._cache = UINT32_MAX,
     };
+    ar_init(&ar);
 }
 
 void tearDown(void) {
-    free(memoria);
-    memoria_len = 0;
 }
 
 static const uint64_t fecha = 1727740800; // 01 de septiembre de 2024
