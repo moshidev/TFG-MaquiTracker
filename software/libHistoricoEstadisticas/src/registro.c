@@ -38,6 +38,16 @@ void registro_reset(void) {
     ultimo_evento_ms = 0;
 }
 
+void registro_init(const registro_t* r) {
+    registro_reset();
+    fecha = r->fecha;
+    num_arboles = r->num_arboles_vibrados;
+    tiempo_vibrando = num_arboles * r->tiempo_medio_vibrando_cs*100;
+    tiempo_entre_arboles = num_arboles * r->tiempo_medio_entre_arboles_cs*100;
+    latitud_dec = r->latitud_dec;
+    longitud_dec = r->longitud_dec;
+}
+
 static bool arbol_detectado(registro_mov_t mov) {
     switch (mov) {
     case kRegistro_Quieto:
