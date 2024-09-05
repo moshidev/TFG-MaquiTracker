@@ -53,6 +53,16 @@ entre otros:
           cuánto tiempo ocupará.
 \end{enumerate}
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{boligrafo-wurt.jpg}
+    \caption{La gestión de un almacén es una tarea recurrente, tediosa y cara. Sin embargo,
+    gracias a estar en contacto con vendedores, podemos disfrutar del bolígrafo de
+    Würth Elektronik, que
+    no sólo nos permite escribir, sino que además nos sirve de regla, destornillador,
+    apuntador táctil, sujeta-móviles y hasta nos permite borrar una pizarra blanca.}
+\end{figure}
+
 \section{Entorno de desarrollo}
 
 El diseño e implementación del entorno de desarrollo lo
@@ -184,7 +194,26 @@ en librerías distintas. En el código específico de la plataforma
 implementamos las dependencias de las librerías y pegamos los distintos
 módulos. Compartimos las ideas de \cite[Modularity: Glue Layers]{ArtOfUnixProgramming}
 
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.55\textwidth]{mfsprayer.jpg}
+    \caption{MFSprayer montada en una caja. El código que desarrollamos
+    probablemente acabe ampliándose y ejecutándose sobre esta plataforma.}
+\end{figure}
+
 \section{Librería Histórico de Registros}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.55\textwidth]{mf2424-joystick-pantalla.jpg}
+    \caption{MF2424v1.0 con Joystick y HMI. Ya que a la hora de desarrollar
+    no teníamos todavía un prototipo que montar en un tractor utilizamos
+    una plataforma muy parecida en la que probamos mediante pruebas manuales
+    que el código de pegamento funciona bien. La MF2424v0.1 no dispone del
+    MB85RS4MT, sin embargo, gracias a la inversión de dependencias podemos
+    ejecutar el código sobre otro integrado de memoria persistente de menor
+    capacidad.}
+\end{figure}
 
 Como primer paso y pilar fundamental definimos la interfaz del
 módulo. De esta forma tenemos claro desde el principio el propósito
@@ -193,9 +222,9 @@ de utilizar la librería en un proyecto.
 
 Decidimos que va a ser responsabilidad de la librería:
 \begin{itemize}[noitemsep,nolistsep]
-    \item \textbf{Escribir y recuperar de memoria} (nos da igual
+    \item \textbf{Escribir y recuperar de memoria}. Nos da igual
           la memoria subyacente, pero optimizamos para acceso a una
-          memoria direccionable a nivel de byte).
+          memoria direccionable a nivel de byte.
     \item \textbf{Extraer información a partir de eventos} que define, y que
           recibe del exterior.
     \item \textbf{Decidir cuándo crear} un registro, \textbf{cuándo trabajar} sobre
@@ -211,6 +240,15 @@ Definimos en forma de tests el comportamiento de la librería e implementamos
 seguidamente siguiendo el mismo ciclo.
 
 \section{Librería MB85RS4MT}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.55\textwidth]{mfhmi.jpg}
+    \caption{MFHMI a falta de soldarle algunos componentes de la fuente de alimentación.
+    Ya que todavía no disponíamos de la tarjeta objetivo en la que correrá
+    finalmente nuestro programa desarrollamos el driver en una MFHMI que disponía
+    del integrado MB85RS4MT.}
+\end{figure}
 
 Leemos \textbf{detenidamente} datasheet que ofrece Fujitsu \cite{Fujitsu:MB85RS4MT}.
 Vamos implementando, un poco según prueba y error, test a test, el driver.
