@@ -121,3 +121,7 @@ github
 Modularity
 datasheet
 BSP
+AGiLE
+Würth
+Elektronik
+MFSprayer
