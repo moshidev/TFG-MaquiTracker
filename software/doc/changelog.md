@@ -16,8 +16,15 @@ header-includes:
 
 # Historial de cambios
 
-## ??-sep-2024 PRELIMINAR v0.2.0
+## 03-sep-2024 PRELIMINAR v0.2.0
 
+- Crea interfaz de la librería y la implementa.
+  - Podemos procesar los eventos.
+  - Podemos recuperar un registro dado una fecha.
+- Implementa estructura de datos para almacenar y recuperar un registro.
+  - Únicamente permitimos un registro por día.
+  - Sigue una política FIFO.
+  - Optimizada para memorias FRAM o similares.
 - Implementa lógica de un registro.
   - Un registro sólo puede tener un día de una fecha.
   - La geolocalización se guarda como la media de los sitios en los que se ha vibrado un árbol.

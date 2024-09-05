@@ -16,7 +16,7 @@ header-includes:
 
 # Plan de Desarrollo
 
-~~1. **Diseña el comportamiento del sistema de registros (v0.1.0)**~~ \ding{51}
+1. ~~**Diseña el comportamiento del sistema de registros (v0.1.0)**~~ \ding{51}
 
 - ~~Decide qué datos guardar en los registros de trabajo.~~ \ding{51}
 - ~~Decide qué criterio seguir para delimitar un registro de trabajo.~~ \ding{51}
@@ -24,14 +24,14 @@ header-includes:
 - ~~Decide soporte de almacenamiento permanente.~~ \ding{51}
 - ~~Decide forma de almacenamiento y recuperación de los datos.~~ \ding{51}
 
-2. **Implementa comportamiento del sistema de registros (v0.2.0)**
+2. ~~**Implementa comportamiento del sistema de registros (v0.2.0)**~~ \ding{51}
 
 - ~~Realiza una estimación de costes.~~ \ding{51}
 - ~~Implementa reglas de un registro.~~ \ding{51}
 - ~~Implementa driver FRAM `MB85RS4MT`.~~ \ding{51}
-- Implementa reglas de almacenamiento y recuperación de registros.
+- ~~Implementa reglas de almacenamiento y recuperación de registros.~~ \ding{51}
 
-3. **Implementa pegamento entre módulos (v0.3.0)**
+3. ~~**Implementa pegamento entre módulos (v0.3.0)**~~ \ding{51}
 
-- Añade soporte de las librerías para la plataforma objetivo.
-- Añade conexión entre interfaz gráfica y sistema de registros.
+- ~~Añade soporte de las librerías para la plataforma objetivo.~~ \ding{51}
+- ~~Añade conexión entre interfaz gráfica y sistema de registros.~~ \ding{51}
