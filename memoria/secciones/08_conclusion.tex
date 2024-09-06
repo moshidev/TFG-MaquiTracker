@@ -1,2 +1,90 @@
-\chapter{Conclusión}
+\chapter{Conclusiones y trabajo futuro}
 
+Exponemos algunas ideas derivadas de nuestro trabajo. A partir del
+fichero \texttt{costes.xlsx} obtenemos un desglose de tiempo
+dedicado al proyecto. Dedicamos 24,5 horas a la implementación,
+10 horas al análisis del problema y 72,5 horas a la memoria.
+
+\section{Objetivos alcanzados}
+
+Entregamos una solución software libre capaz de almacenar
+y recuperar registros de trabajo de un paraguas vibrador sobre
+cualquier plataforma que hile nuestras librerías e implemente
+sus dependencias. Además, ofrecemos un controlador para el
+integrado FRAM de Fujitsu \texttt{MB85RS4MT} \cite{Fujitsu:MB85RS4MT}.
+
+Gracias al cuidadoso análisis del problema antes de decidir
+soluciones reducimos la complejidad y costes del proyecto.
+
+Junto al software entregamos esta memoria, en la que hemos
+descrito una metodología de desarrollo software apropiada
+para este tipo proyectos.
+
+\section{Coste final}
+
+Comparamos el coste que estimamos en el capítulo anterior
+y los costes que finalmente tenemos. Como ya sabemos, esta estimación
+la hacemos con los dos años en datos que tengo almacenados acerca de mis
+tiempos de desarrollo y costes en mi empresa.
+
+\subsection{Tiempo}
+
+Recuperamos la tabla que hicimos para el capítulo de implementación y la
+modificamos para contrastar los datos estimados con los datos que hemos
+extraído en el desarrollo del proyecto.
+
+Se puede consultar con detalle el tiempo dedicado al proyecto en el
+documento Excel \texttt{costes.xlsx}, incluido en el repositorio.
+
+\begin{table}[!h]
+    \centering
+    \begin{tabular}{|l|c|c|c|}
+        \hline
+        \multicolumn{1}{|c|}{\textbf{Nombre}}                                                                                               & \textbf{Horas estimadas}   & \textbf{Días estimados} & \textbf{Horas reales} \\ \hline \hline
+        \begin{tabular}[c]{@{}l@{}}Modelado de las reglas de\\ procesamiento de eventos\\ (registro)\end{tabular}                  & 8$\sim$11,5 horas & 2$\sim$3 días  & 4                                                                                                  \\ \hline
+        \begin{tabular}[c]{@{}l@{}}Modelado de las reglas de\\ almacenamiento y recuperación\\ de eventos (registros)\end{tabular} & 8$\sim$15,5 horas & 2$\sim$3 días  & 5                                                                                                  \\ \hline
+        Driver FRAM                                                                                                                & 3$\sim$6 horas    & 1$\sim$2 días  & 9,25                                                                                                  \\ \hline
+        Integración con HMI                                                                                                        & 1$\sim$9 horas    & 1$\sim$2 días  & 5,25                                                                                                 \\ \hline
+    \end{tabular}
+    \caption{\textit{Al hacer el análisis nos estamos dando cuenta que olvidamos desglosar y estimar el diseño de los gráficos de la interfaz gráfica.
+    A este diseño le dedicamos una hora.}}
+\end{table}
+
+Según nuestra estimación de tiempo de desarrollo, la cual no tenía en cuenta el tiempo de analizar
+el problema puesto que sin el análisis del problema no tenemos un desglose sobre el que poder hacer
+una estimación, en el mejor de los casos tardábamos en desarrollar la solución 20 horas, mientras
+que en el peor de los casos 42 horas. 
+
+En analizar el problema, contando el tiempo de redactar la memoria,
+hemos tardado 10 horas.
+
+Según los datos que registramos \textbf{tardamos en la implementación 24,5 horas distribuidas a lo largo de
+10 días}.
+
+\subsection{Dinero}
+
+Nuestro coste de desarrollo depende enteramente del importe que
+facturamos a la hora. El desglose de los costes que consideramos
+en este importe que facturamos los exponemos en la
+\hyperref[sec:precio_hora]{sección 2.10.1}.
+
+Nuestro desarrollo tiene un coste de $(10 + 24.5) \cdot 18.25\mbox{\euro} = 629.63\mbox{\euro}$. 
+El desarrollo de la subcontrata de la interfaz gráfica se factura por valor de $140\mbox{\euro}$.
+El coste de la empresa, cuyos conceptos desglosamos en la \hyperref[sec:estimación_de_costes]{sección 4.1},
+no podemos revelarlo.
+Los importes son antes de impuestos.
+
+\section{Trabajo futuro}
+
+Una vez implementado el primer PMV analizamos las consecuencias de
+nuestro producto. Probablemente será interesante en un futuro:
+
+\begin{itemize}[noitemsep,nolistsep]
+    \item \textbf{Proteger el procesamiento de datos ante ataques}. Ya que
+          la información que obtenemos a través del bus CAN no
+          tiene que superar ningún filtro un agente podría engañar
+          los registros del sistema.
+    \item \textbf{Añadir en la interfaz gráfica otra forma de acceder a los
+          registros}. Por ejemplo, a través de un calendario o de una
+          lista de registros.
+\end{itemize}
