@@ -155,6 +155,10 @@ el proyecto fácilmente. Ha demostrado ser eficaz y suficiente
 en proyectos de este tipo en el pasado, y es una tecnología ya
 conocida en la empresa.
 
+Creo imágenes \textit{Docker} de desarrollo que se pueden utilizar en
+\textit{Visual Studio Code} para que cualquier persona pueda, sin
+necesidad de instalación, contribuir o mantener el repositorio.
+
 \subsection{HD4: Gestión de documentación}
 
 \textit{Como desarrollador quiero poder, dada una versión de programa,
@@ -209,7 +213,7 @@ módulos. Compartimos las ideas de \cite[Modularity: Glue Layers]{ArtOfUnixProgr
     \caption{MF2424v1.0 con Joystick y HMI. Ya que a la hora de desarrollar
     no teníamos todavía un prototipo que montar en un tractor utilizamos
     una plataforma muy parecida en la que probamos mediante pruebas manuales
-    que el código de pegamento funciona bien. La MF2424v0.1 no dispone del
+    que el código de pegamento funciona bien. La MF2424v1.0 no dispone del
     MB85RS4MT, sin embargo, gracias a la inversión de dependencias podemos
     ejecutar el código sobre otro integrado de memoria persistente de menor
     capacidad.}
@@ -262,11 +266,15 @@ que abstraemos mediante una interfaz que únicamente permite leer y escribir un
 número determinado de bytes de forma síncrona.
 
 Hacemos mediciones empíricas del tiempo que tarda en escribir y leer. De media escribió
-toda la memoria en 1.53s.
+toda la memoria en 1.53s con el bus SPI trabajando a 16MHz.
+
+\vspace*{\fill}
+
+\pagebreak
 
 \section{Documentación para el cliente}
 
-\subsection{Comunicación acerca del estado del desarrollo del proyecto}
+\subsection{Comunicación acerca del estado del desarrollo del proyecto} \label{sec:plan_de_desarrollo}
 
 Según estimamos o según se nos solicita comunicamos con el cliente el
 estado del proyecto mediante el documento ``Plan de Desarrollo''.
@@ -277,7 +285,7 @@ más cuando el proyecto está en continuo desarrollo.
 
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=\textwidth]{plan-de-desarrollo.png}
+    \includegraphics[width=0.9\textwidth]{plan-de-desarrollo.png}
     \caption{\textit{Captura de pantalla del documento ``Plan de Desarrollo''.
     Tachamos las tareas que hemos completado y definimos cuáles serán los
     siguientes pasos que probablemente daremos.}}
@@ -291,7 +299,7 @@ apoyamos en el historial de \texttt{git} para redactarlo.
 
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=\textwidth]{historial-de-cambios.png}
+    \includegraphics[width=0.9\textwidth]{historial-de-cambios.png}
     \caption{\textit{Captura de pantalla del documento ``Historial de cambios''.
             Explicamos qué cambios han ocurrido en los productos a entregar
             desde la última versión.}}

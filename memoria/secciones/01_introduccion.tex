@@ -1,8 +1,9 @@
 \chapter{Introducción}
 
-Este Trabajo de Fin de Grado consiste en construir una solución software
-capaz de exportar y visualizar información sobre la recolección de cultivos
-leñosos haciendo uso de un sistema de control embebido.
+Este Trabajo de Fin de Grado consiste en desarrollar un módulo
+software que registre automáticamente información sobre
+la recolección de cultivos leñosos haciendo uso de un
+sistema de control embebido.
 
 Este proyecto es software libre, y está liberado con
 la licencia \textbf{GNU Affero General Public License} \cite{agplv3}.
@@ -32,21 +33,21 @@ de los frutos secos como las almendras o los pistachos y otros frutales
 \subsection{Situación de las explotaciones agrícolas en España}
 
 \textbf{La explotación} de la superficie agrícola utilizada \textbf{se realiza mayoritariamente por personas
-físicas}. \textbf{Observamos un mayor número de sociedades mercantiles
-a medida que aumenta el tamaño de explotación}, siendo el 30\% de quienes explotan los latifundios\footnote{%
+físicas}. Aunque \textbf{observamos un mayor número de sociedades mercantiles
+a medida que aumenta el tamaño de explotación}, la proporción de estas no llega a más del 30\%
+con respecto a las personas físicas, y este porcentaje sólo se da en latifundios\footnote{%
     Consideramos que una explotación agrícola es un latifundio a partir de las 100 hectáreas.
 }%
- en España
+.
  \cite[Personalidad jurídica según el tamaño de explotación]{INEpanoramicaCensoAgrario}.
 
-\textbf{No existe apenas una renovación de los jefes de explotación}%
+Además, \textbf{no existe apenas una renovación de los jefes de explotación}%
 \footnote{%
     Según Eustat, la persona física responsable de las actividades financieras y de producción, corrientes y cotidianas de una explotación agrícola.
 }%
-, con un porcentaje de gestores menores de 45 años
-inferior al 40\% en todas las comarcas. La formación reglada específica de los jefes en el caso de
-las explotaciones agrarias es inferior al 25\% en todas las comarcas españolas,
-llegando a menos del 2,84\% regiones en las que predominan los cultivos leñosos
+. Según el INE, no hay comarca en la que menos del 60\% de los jefes de explotación tenga más de 45 años.
+Y de entre todos los jefes de explotación no hay comarca que tenga más de un 25\% de estos con formación
+reglada específica, \textbf{llegando a menos del 2,84\% regiones en las que predominan los cultivos leñosos}
  \cite[Formación de los jefes de explotación]{INEpanoramicaCensoAgrario}.
 
 \subsection{Gestión de las explotaciones de cultivos leñosos}
@@ -61,9 +62,8 @@ llegando a menos del 2,84\% regiones en las que predominan los cultivos leñosos
     significativamente. Elaboración propia.}}
 \end{figure}
 
-Encontramos la mayor superficie de cultivos leñosos en la mitad sur de la península,
-destacando Andalucía, Castilla-La Mancha y Extremadura.
-\cite[Reparto de la superficie dedicada a los grandes cultivos.]{INEpanoramicaCensoAgrario}
+La geografía de este tipo de cultivos se concentra en Andalucía, Castilla-La Mancha y Extremadura.
+ \cite[Reparto de la superficie dedicada a los grandes cultivos.]{INEpanoramicaCensoAgrario}
 
 \textbf{Dos terceras partes del coste} de este tipo de cultivos \textbf{se destinan a la
 recolección y a la poda}
@@ -73,23 +73,11 @@ los vareadores eléctricos y los paraguas vibradores,
 mientras que para la poda las tijeras eléctricas, las motosierras y
 las trituradoras para motocultores.
 
-El \textbf{encarecimiento de la mano de obra}, la \textbf{importación de producto de países con menor coste de
-producción} y el \textbf{bajo nivel de automatización y de inversión} por parte
-de los propietarios de las explotaciones agrarias probablemente sean 
-algunas de las causas que hayan hecho que la rentabilidad de la que
-hablábamos en el anterior apartado haya disminuido en los últimos años.
+Cada vez es menos rentable cultivar. La inversión en maquinaria y mecanización
+busca prescindir de la mayor mano de obra posible.
 
-\subsection{Externalización de la recolecta de cultivos leñosos a empresas especializadas}
-
-\textbf{Algunos jefes de explotación deciden externalizar la recolección
-de sus cultivos a empresas especializadas}. Ocurre un problema en este
-caso, y es que el jefe de explotación deja de tener la certeza de que la
-recolección se ha realizado de forma correcta, y de que la cantidad de producto
-recolectado es la que se espera. Este problema también se da en otros contextos,
-como el de grandes fincas profesionalizadas.
-
-\textbf{Nuestro cliente acude a nosotros para desarrollar una solución propia de
-estadísticas de recolección en cultivos leñosos.}
+Además, algunos jefes de explotación deciden externalizar la recolección
+de sus cultivos a empresas especializadas.
 
 \section{Problema a resolver} \label{sec:problema_a_resolver}
 
@@ -109,6 +97,9 @@ degenerado movimiento. \cite{AgileBackToBasics}
 , el lenguaje que se utiliza es simple pero adecuado
 en su contexto y no tiene sesgos hacia ninguna solución.
 
+Nuestro cliente acude a nosotros para desarrollar una solución propia de
+estadísticas de recolección en cultivos leñosos.
+
 Existen empresas y trabajadores los cuales, a cambio de dinero, trabajan la
 tierra de un tercero con su maquinaria.
 
@@ -122,9 +113,8 @@ de la máquina dado un intervalo de tiempo. Quiere conocer, a partir de una fech
    \item Tiempo de trabajo efectivo.
 \end{enumerate}
 
-\textbf{Tanto quien contrata el servicio como quien lo ejecuta} quieren tener una seguridad alta
-en que los reportes/resúmenes son verdaderos y que no han sido modificados. Quieren poder consultar
-los datos sin necesidad de conexión a Internet. Quieren poder comprobar la veracidad de los datos.
+\textbf{Tanto quien contrata el servicio como quien lo ejecuta} quieren poder consultar
+los datos sin necesidad de conexión a Internet y quieren poder comprobar la veracidad de los datos.
 
 \section{Objetivo}
 
@@ -141,41 +131,29 @@ leñosos con paraguas vibradores según los criterios de nuestro cliente},
 con la restricción de que el registro y el exportado pueda ejecutarse en
 una plataforma hardware ya distribuida en el mercado.
 
+\vspace*{\fill}
+
 \section{Estructura del documento}
 
-Esta memoria refleja el proceso de desarrollo de la solución software.
-Cada una de las secciones expuestas representa una etapa del desarrollo.
-\textbf{Etapas posteriores se basan en las anteriores, y pueden corregirlas.}
-Si se corrigen, lo indicamos.
+Después de distintas iteraciones a lo largo del desarrollo de este Trabajo de Fin de Grado
+llegamos a la división de la memoria en los siguientes capítulos.
 
 \begin{enumerate}
     \item \textbf{Introducción.} Donde exponemos el problema a resolver,
-    sus circunstancias actuales y los objetivos que se quieren alcanzar en rasgos generales.
+          sus circunstancias actuales y los objetivos que se quieren alcanzar en rasgos generales.
 
     \item \textbf{Metodología.} Donde exponemos cómo abordamos el desarrollo del problema y su solución y por qué.
-    Explicamos qué metodología seguimos, cómo estimamos el tiempo y los costes, cómo seguimos el progreso
-    del proyecto y cómo registramos métricas para los objetivos del sexto capítulo de esta memoria.
+          Explicamos qué metodología seguimos, cómo estimamos el tiempo y los costes, cómo seguimos el progreso
+          del proyecto y cómo registramos métricas para los objetivos del sexto capítulo de esta memoria.
 
-    \item \textbf{Problema a resolver.} Donde describimos el problema de una forma clara y concisa.
-    Enunciamos qué se quiere resolver, quién va a interactuar con el programa y en qué circunstancias
-    se interactuaría con el programa.
-
-    \item \textbf{Arquitectura del sistema.} Donde enumeramos distintas soluciones arquitectónicas
-    plausibles y elegimos una de ellas junto al cliente.
+    \item \textbf{Análisis de requisitos.} Donde decidimos en una primera aproximación cómo debe comportarse el
+          sistema, de forma que evitamos construir un PMV\footnote{\textit{Producto Mínimamente Viable}.
+          Es un producto cuyo objetivo es obtener realimentación de los usuarios antes de realizar un diseño de
+          un producto para el cuál desconocemos la cabida que va a tener.} incorrecto.
 
     \item \textbf{Implementación.} Donde describimos cómo llevamos a cabo el desarrollo software
-    de la solución propuesta.
-    \begin{itemize}[noitemsep,nolistsep]
-        \item Estimación de tiempo y costes.
-        \item Escucha y registro de eventos.
-        \item Almacenamiento en memoria persistente.
-        \item Recuperación de memora persistente.
-        \item Visualización de los datos.
-    \end{itemize}
-
-    \item \textbf{Comparación de los datos previos, durante y posteriores al desarrollo.} Donde evaluamos cómo de
-    acertados fueron los análisis del tercer capítulo de esta memoria.
+          de la solución propuesta.
 
     \item \textbf{Conclusión.} Donde realizamos una visita crítica a las ideas de los puntos
-    anteriores una vez finalizado el proyecto y exponemos nuevas ideas surgidas de la experiencia.
+          anteriores una vez finalizado el proyecto y exponemos nuevas ideas surgidas de la experiencia.
 \end{enumerate}

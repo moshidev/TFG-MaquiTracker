@@ -137,8 +137,7 @@ a los procedimientos sin un por qué. Alertan de que definitivamente dejarán de
 compatibles con la incipiente modernización del mercado (expansión del comercio en
 línea, compañías en línea, compañías web, etc). \cite{HistoriaManifiestoAgilJim}
 
-Dicen que llegan a estas conclusiones a partir de su experiencia \cite{HistoriaManifiestoAgilJim}
-y personalmente añadiría, \textit{y teniendo como objetivo la calidad del producto}.
+Dicen que llegan a estas conclusiones a partir de su experiencia. \cite{HistoriaManifiestoAgilJim}
 
 El manifiesto es vago y no es exhaustivo, pero en ningún lugar se habla de no utilizar
 procesos o herramientas.
@@ -173,8 +172,8 @@ más difícil de actualizar.}.
 
 \subsection{Seguimiento de cambios sobre el repositorio}
 
-Sabemos que si a cada modificación que hacemos en el repositorio anotamos
-lo que ha cambiado y por qué lo hemos hecho entonces tenemos distintas ventajas.
+Sabemos que \textbf{si a cada modificación que hacemos en el repositorio anotamos
+lo que ha cambiado} y por qué lo hemos hecho entonces tenemos distintas ventajas.
 
 \begin{enumerate}
     \item Sabiendo la razón por la que se realiza un cambio ayudamos a entender
@@ -187,7 +186,7 @@ lo que ha cambiado y por qué lo hemos hecho entonces tenemos distintas ventajas
 Por convención los mensajes que acompañarán a estas \textit{contribuciones} vienen
 dados en imperativo y serán claros y concisos, tal y como se propone en \cite[Commit Guidelines]{ProGIT}.
 
-Si además estos cambios son para modificar un único aspecto del repositorio
+\textbf{Si además estos cambios son para modificar un único aspecto del repositorio}
 entonces, además de potenciar los beneficios anteriores, tenemos las siguientes
 ventajas entre otras.
 
@@ -233,11 +232,12 @@ entender de forma intuitiva.
 
 Dialogamos con el cliente, formulamos el problema haciendo uso de las fases de
 empatizar y definir del método \textit{Design Thinking} para después, tanto en un análisis
-previo como a medida que vamos desarrollando el proyecto, extraer historias de usuario, historias de
-desarrollador y \textit{user journeys} de donde obtenemos los objetivos deseados
-junto a sus respectivas importancias.
-Finalmente sintetizamos esta información en forma de requisitos funcionales y
-requisitos no funcionales.
+previo como a medida que vamos desarrollando el proyecto, decidir aspectos acerca de la
+solución al problema. Entre ellas podemos encontrar historias de usuario, historias de
+desarrollador, \textit{user journeys} requisitos funcionales y
+requisitos no funcionales, aunque en última instancia lo que prevalecerá serán los
+tests sobre el repositorio, y los aspectos que se desarrollarán vendrán dados por
+el documento \hyperref[sec:plan_de_desarrollo]{Plan de Desarrollo}.
 
 \subsection{Conversaciones con el cliente}
 
@@ -290,7 +290,7 @@ Por ejemplo, para los productos que desarrollamos en nuestro TFG, sabemos por ex
 que para nuestros clientes y dado nuestro conocimiento en el sector el punto dulce está
 en hacer un único documento en el que describimos hitos a alcanzar en el desarrollo.
 Estos hitos los desglosamos en descripciones claras y concisas acerca del comportamiento del software.
-A este documento lo llamamos \textbf{Plan de Desarrollo}.
+A este documento lo llamamos \hyperref[sec:plan_de_desarrollo]{\textbf{Plan de Desarrollo}}.
 
 Gracias a este documento el cliente puede darse
 cuenta rápidamente de que estamos dedicando tiempo de desarrollo a un aspecto que no le
@@ -298,11 +298,11 @@ interesa desarrollar ahora mismo. Porque puede conocer en todo momento el estado
 
 \subsection{Contexto en el que se desarrolla el problema}
 
-Para poder cuantificar de una aproximada el potencial de proyecto y para, en caso de que el
+Para poder cuantificar de una forma aproximada el potencial de proyecto y para, en caso de que el
 proyecto nos interese, formular los requisitos desde el punto de vista de los clientes que
 interactuarán con nuestro producto, investigamos acerca del contexto que rodea al problema.
 
-Descubrimos quiénes son los usuarios objetivo de nuestros productos y en qué contexto
+Descubrimos quiénes son los usuarios objetivo de nuestros productos y en qué situaciones
 interactuarían con el sistema.
 
 \subsection{Investigación de los últimos avances (\textit{state-of-the-art})}
@@ -310,14 +310,7 @@ interactuarían con el sistema.
 Investigamos si existen o no soluciones existentes para el problema. Si las existen,
 las evaluamos y estudiamos su enfoque.
 
-\section{Definición del problema a resolver (definición de requisitos)}
-
-Definimos en forma de requisitos funciones y no funcionales cómo debe de comportarse el
-sistema. Lo hacemos así porque nuestra experiencia nos dice que suele ser suficiente
-para este tipo de proyectos. En caso de esto no fuese suficiente o
-que trabajásemos con más gente y el proyecto tuviese un riesgo superior plantearíamos
-trabajar con otro tipo de herramientas como son las historias de usuario, de desarrollador
-o \textit{user journeys}, por ejemplo.
+\section{Definición del problema a resolver}
 
 Buscamos especificar en detalle lo que el sistema informático tiene que hacer, aunque no
 cómo tiene que hacerlo. De esta forma no restringimos de forma innecesaria
@@ -333,8 +326,8 @@ aquellos defectos o excesos que encontremos junto a él\footnote{%
 }.
 
 Los requisitos que definimos probablemente no serán definitivos. Comunicamos al cliente nuestra
-capacidad para cambiar un requisito según el tipo y que el coste de cambiarlos, cuanto más
-avanzado esté el desarrollo, será muy superior\footnote{%
+capacidad para cambiar un requisito según el tipo y que el coste de cambiarlos. Además le
+explicamos que cuanto más avanzado esté el desarrollo el coste de cambio crece significativamente\footnote{%
 Tanto coste de tiempo, de dinero, como de oportunidad. Por ejemplo, \cite{CodeComplete2} habla
 acerca de la evolución de estos costes.%
 }.
@@ -388,13 +381,7 @@ los siguientes requisitos para aceptar un requisito no funcional.
 \section{Diseño de la arquitectura}
 
 Cuando hablamos de arquitectura nos referimos a la forma de nuestra solución en términos generales.
-Establecemos criterios que afectarán de forma determinante al resto del proyecto.\footnote{
-    Por ejemplo, si el problema exige construir un coche pero empezamos construyendo una bicicleta probablemente acabemos
-    teniendo que reconstruir una gran parte del proyecto cuando se imponga la realidad.
-    Una solución enfocada como conjunción de librerías será muy diferente a la de un único ejecutable.
-}
-
-La arquitectura define tanto sus interfaces con el exterior como sus interfaces entre componentes.
+Establecemos criterios que afectarán de forma determinante al resto del proyecto.
 
 Dentro de la arquitectura incluimos la categorización de los componentes de la solución en términos
 de subsistemas, cómo interaccionan entre si, la definición de estructuras de datos y los aspectos
@@ -437,9 +424,6 @@ Probablemente, a raíz de la reflexión sobre las cuestiones arquitectónicas, d
 requisitos que no consideramos en un principio. Y al igual que los requisitos restringirán la arquitectura, la arquitectura
 restringirá a los requisitos.
 
-Justificamos cada una de las decisiones que tomemos después de haber reflexionado sobre las
-distintas alternativas. 
-
 % A veces desconocemos si una solución va a ser efectiva
 % A veces podemos probar las premisas de una solución de una forma
 % menos costosa que desarrollar la solución
@@ -466,8 +450,7 @@ principalmente a métodos que ayudan a descubrir defectos en el producto
 queremos influir con nuestro producto.
 
 Si detectamos incoherencias, datos erróneos, o vemos que podemos mejorar
-la arquitectura y los requisitos, lo hacemos. Recordemos que fases posteriores
-pueden corregir a anteriores, y viceversa.
+la arquitectura y los requisitos, lo hacemos.
 
 \subsection{Entrega continua}
 
@@ -564,18 +547,6 @@ por parte de \textit{stakeholders} sobre qué debe de
 ser capaz de hacer el software que terminan en años de desarrollo
 y con objetivos sin cumplir, etc.
 
-Si el chico le hubiese propuesto de quedar de una forma casual
-habría llegado a conocerla mejor\footnote{¡O no! A lo mejor ella no
-quiera quedar con él. Al chico le interesa
-conocer esta realidad lo antes posible.}. Podría haberse dado cuenta que
-ella no está acostumbrada a salir mucho de casa, que buscando sitios
-interesantes con los que pasar tiempo con ella tal vez podría ganar su
-confianza, y su cariño. Podría haber probado esta hipótesis, y cambiar
-su estrategia según el \textit{feedback} que recibiría. Podría en este tiempo que
-pasan juntos darse cuenta que no es la chica adecuada para él. Podría
-incluso haberse dado cuenta que, la idea de la canción, podría ser buena
-bajo unas determinadas circunstancias.
-
 Los autores de \cite{accelerate} divulgan cómo afectan los tiempos de feedback
 a los productos software. Nos centramos en los capítulos dedicados al impacto de
 la entrega continua y al impacto de la entrega continua%
@@ -610,7 +581,8 @@ la solución más simple y adecuada posible.
 Imaginemos que tenemos que implementar las reglas de los bolos.
 Si modelamos el problema en términos de clases es fácil acabar 
 creando abstracciones antes de tiempo, clases innecesarias,
-código con más recovecos de los necesarios.
+código con más recovecos de los necesarios. Podemos ver un ejemplo
+en la figura 2.2.
 
 \begin{figure}[!h]
     \centering
@@ -628,7 +600,7 @@ y útiles a la hora de desarrollar cualquier pieza de software hay casos
 en los que seguir el método es contraproducente.
 
 Aunque las ideas del método son útiles y aplicables en otros ámbitos
-tiene poco o ningún sentido aplicarlo rigurosamente en otros ámbitos o
+tiene poco o ningún sentido aplicarlo rigurosamente en estos otros ámbitos o
 en otros niveles; No deja de ser un método para modelar sistemas en
 términos de módulos comprobados unitariamente.
 
@@ -636,7 +608,7 @@ términos de módulos comprobados unitariamente.
 De poco sirve hacer un test que duplique la lógica que implementamos. Las
 pruebas que debemos desarrollar a la hora de seguir el método tienen que
 \textit{declarar} el funcionamiento, y hacerlo de una forma que permita que
-este sea comprobable. De alguna forma, no se suele divulgar.
+este sea comprobable. De alguna forma esta directriz no se suele divulgar.
 
 \subsubsection{\textit{TDD} como herramienta de modelado}
 
@@ -700,6 +672,8 @@ El 29 de agosto del 2023 escribo el siguiente hilo de mensajes en SWAD.
 }''
 \end{quote}
 
+\section{Diseño de interfaces de usuario}
+
 \section{Estimación de costes}
 
 La estimación de costes en los proyectos informáticos suelen
@@ -726,7 +700,7 @@ ganaría más? ¿si no lo hago, perdería?) y los costes de soporte del proyecto
 \section{Seguimiento del desarrollo por parte del cliente}
 
 Gracias a que el cliente puede conocer en cualquier momento a qué 
-parte del proyecto nos estamos dedicando puede darse cuenta,
+parte del proyecto estamos dedicando nuestros recursos puede darse cuenta,
 gracias a la información que posee, de que estemos dedicando tiempo
 o esfuerzo a un aspecto del proyecto que él no considere tan
 relevante. También puede planificar apartar una máquina para poder
@@ -735,7 +709,7 @@ testar un hito en el desarrollo del proyecto en la máquina objetivo.
 Usamos un documento que nos sirve de guía en nuestro trabajo, y que
 vamos actualizando según vamos implementando características.
 Compartimos este documento con el cliente periódicamente.
-Llamamos a este documento \textbf{Plan de desarrollo}.
+Llamamos a este documento \hyperref[sec:plan_de_desarrollo]{\textbf{Plan de Desarrollo}}.
 
 Cada vez que liberamos una versión compartimos otro documento llamado
 \textit{\textbf{Changelog}}\footnote{Histórico de cambios.}. Escribimos
@@ -763,7 +737,7 @@ Cuando trabajamos:
 
 Dentro de mi precio por hora están incluidos otros gastos muy relevantes como son:
 
-\begin{enumerate}
+\begin{enumerate}[noitemsep,nolistsep]
     \item Cuota de la Seguridad Social.
     \item Retenciones del Impuesto sobre la Renta de las Personas Físicas.
     \item Coste amortizado de equipamiento para llevar a cabo la actividad.
@@ -777,6 +751,4 @@ Yo, como trabajador autónomo, ofrezco servicios a mi empresa a precio de mercad
 }
 sumándole a mayores estos gastos.
 
-Es la empresa la que cobra a mi cliente por servicio.
-
-En caso de acabar el año con superávit reinvertimos en la empresa.
+Es mi empresa la que cobra a mi cliente por servicio.

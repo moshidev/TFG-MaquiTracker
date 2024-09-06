@@ -11,7 +11,10 @@ de la solución.
 Acordamos con el cliente idear un producto teniendo como referencia la
 \hyperref[sec:HU01]{HU01: Recuperación de histórico}%
 \footnote{%
-    % Explica lo que es una historia de usuario
+    Una historia de usuario describe una funcionalidad de un sistema de
+    una forma casual y desde el punto de vista del cliente. A partir
+    de las ideas que presenta se pueden ir extrayendo tareas para llegar
+    al fin que describe.
 }%
 , ya que
 no define una solución en concreta pero describe cómo interactuará
@@ -35,7 +38,7 @@ Los controles electrónicos con pantalla están compuestos por tres sistemas.
     \item \textbf{HMI}. Módulo que por medio de una interfaz gráfica muestra al usuario
           métricas acerca de la máquina. Se comunica con el control mediante un puerto
           serie asíncrono.
-    \item \label{sec:joystick_con_control} \textbf{MF2424 (Joystick con control)}. Módulo de potencia que decide qué acción realizar
+    \item \label{sec:joystick_con_control} \textbf{MF2424v1.2 (Joystick con control)}. Módulo de potencia que decide qué acción realizar
           según las lecturas de un joystick. Controla el sistema hidráulico del
           paraguas vibrador.
         \begin{itemize}[noitemsep,nolistsep]
@@ -153,9 +156,9 @@ de los datos en almacenamiento persistente.
         \textit{Padding}             & uint32\_t &  \\ \hline
     \end{tabular}
     \caption{Estructura para el registro de estadísticas propuesto para un día de trabajo.
-    Añadimos \textit{padding} hasta llegar a los 32 bytes, de forma que aseguramos que los
-    registros queden alineados. Esto también permite que en un futuro
-    podamos meter hasta 10 bytes más de información por registro.}
+    Añadimos \textit{padding} hasta llegar a los 32 bytes. Esto permite que en un futuro
+    podamos meter hasta 10 bytes más de información por registro sin afectar a la capacidad
+    de almacenamiento, ya que tenemos capacidad de almacenar registros durante más de 44 años.}
     \label{table:almacenamiento}
 \end{table}
 
@@ -191,7 +194,8 @@ que permite almacenar registros para más de los 5 años que nos pide el cliente
 Quien desarrolla la interfaz gráfica nos indica que la capacidad
 expresiva de esta es mínima. Tenemos que adaptar la capacidad
 expresiva del diseño a las capacidades del soporte software y
-hardware del vendedor de las pantallas que se eligieron para el proyecto.
+hardware del vendedor de las pantallas que se eligieron para el proyecto
+del que es parte este módulo.
 
 La comunicación entre módulos la hacemos mediante estructuras de datos.
 Según el estado de estas estructuras de datos nuestro programa y el de
@@ -234,6 +238,8 @@ idea general acerca de este.
 
 Los requisitos definitivos se codifican en forma de tests, por lo que
 esta síntesis sólo es una ayuda inicial.
+
+\subsection{Cuestiones arquitectónicas}
 
 \subsection{Reacción del sistema a partir de los eventos del control}
 
@@ -286,13 +292,20 @@ Si existe muestra la fecha, la ubicación aproximada del trabajo,
 el número de árboles vibrados, el tiempo medio entre vibraciones
 y el tiempo medio entre árboles.
 
+El usuario puede sufrir de dificultades a la hora de leer,
+debido a vista cansada o similares. Además, la pantalla se
+utilizará a plena luz del día.
+
 Este requisito muy probablemente cambie si los usuarios no
 lo perciben intuitivo.\footnote{
     Para evitar realizar esfuerzo innecesario, antes de implementar,
-    realizamos un diseño y preguntamos a personas que desconocen
+    lo ideal sería realizar un diseño y preguntar a personas que desconocen
     el propósito de la interfaz y cómo se interactúa con ella para
     qué sirve y cuál es su propósito, y comprobamos que interactuarían
-    correctamente con ella. Evaluamos sus comentarios.
+    correctamente con ella, evaluando sus comentarios. Sin embargo,
+    buscamos una solución suficiente para poder obtener feedback 
+    del prototipo en el campo, ya que la campaña de recolección de la
+    almendra ya ha empezado.
 }
 
 \subsection{Estructura de datos para almacenar los registros}
@@ -311,15 +324,13 @@ Al recuperar el registro también devuelve información suficiente para
 que (RF05) pudiera escribir datos sobre el registro.
 
 La recuperación de un registro se realiza por medio de una búsqueda
-dicotómica de las fechas que almacenamos en la FRAM.
+binaria sobre las fechas que almacenamos en la FRAM.
 Esta operación no modifica los datos contenidos en la FRAM.
 
 \subsubsection{RF05: Escritura de un registro}
 
 Dado un registro existente (RF04) (RF06) el sistema permite almacenar nuevos
 datos en este registro.
-
-El sistema no permite almacenar una fecha diferente a la existente.
 
 \subsubsection{RF06: Creación de un registro}
 
